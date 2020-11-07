@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Music {
 
+
     public static void main(String[] args) {
         song song= new song();
         Scanner scanner= new Scanner(System.in);
