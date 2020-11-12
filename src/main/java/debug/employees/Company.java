@@ -24,7 +24,7 @@ public class Company {
         return null;
     }
 
-    public List<String> ListEmployeeName() {
+    public List<String> listEmployeeName() {
         List<String> names = new ArrayList<>();
         for (Employee employee : employees) {
             names.add(employee.getName());
