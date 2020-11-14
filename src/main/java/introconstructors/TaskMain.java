@@ -12,7 +12,7 @@ public class TaskMain {
         task.setDuration(90);
 
         System.out.println("Started at"
-             +task.getStartDataTime()
+             +task.getStartDateTime()
               +"and took"
               +task.getDuration()
               +"minutes to finish");
