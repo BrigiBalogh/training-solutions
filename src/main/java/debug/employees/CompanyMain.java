@@ -17,9 +17,21 @@ public class CompanyMain {
       company.addEmployee(employee3);
 
       Employee katinka = company.findEmployeeByName("Kiss Katinka");
-        System.out.println(katinka.getName()+""+katinka.getYearOfBirth());
+        System.err.println(katinka.getName()+""+katinka.getYearOfBirth());
 
         List<String> names = company.listEmployeeName();
-        System.out.println(names);
+        System.err.println(names);
+
+      String[]  numbera = {"a","n","d"};
+      String asd="andras";
+      for (String number: numbera)
+      {
+
+        System.out.println(numbera);
+      }
+
+
+
+
     }
 }

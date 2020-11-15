@@ -6,7 +6,7 @@ import java.util.List;
 public class Company {
 
     private List <Employee> employees;
-
+     int asd = 1;
     public Company(List<Employee>employees){
         this.employees = employees;
     }
@@ -15,7 +15,8 @@ public class Company {
         employees.add(employee);
     }
 
-    public Employee findEmployeeByName(String name) {
+    public Employee findEmployeeByName(String name)
+    {
         for (Employee employee : employees) {
             if (employee.getName().equals(name))  {
                 return employee;
