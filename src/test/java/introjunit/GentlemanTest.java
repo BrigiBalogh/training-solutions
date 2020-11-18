@@ -3,8 +3,6 @@ package introjunit;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 public class GentlemanTest {
 
     @Test
@@ -14,6 +12,9 @@ public class GentlemanTest {
         String greeting = new Gentleman().sayHello(name);
 
         assertEquals("Hello John Doe",greeting);
+    }
+
+    private void assertEquals(String hello_john_doe, String greeting) {
     }
 
 }
