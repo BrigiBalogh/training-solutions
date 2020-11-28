@@ -7,11 +7,13 @@ public class Operators {
      return n % 2 ==0;
     }
 
-    public int multiplyByPowerOfTwo(int number,int power) {
+    public int multiplyByPowerOfTwo(int number,int power)
+    {
         return number << power;
     }
 
-    public void cannotConvert() {
+    public void cannotConvert()
+    {
         int i = -1;
         String s = Integer.toBinaryString(i);
         System.out.println(s);
