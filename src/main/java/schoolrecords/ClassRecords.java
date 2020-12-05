@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static sun.util.locale.LocaleUtils.isEmpty;
+
 
 public class ClassRecords {
 
@@ -22,7 +22,7 @@ public class ClassRecords {
 
     public double calculateClassAverage(){
         if(students.isEmpty()) {
-            throw new ArithmeticException("No student in the class !");
+            throw new ArithmeticException("No student are in the class !");
         }
         double classAverage = 0;
         int countStudent= 0;
@@ -40,7 +40,24 @@ public class ClassRecords {
 
     }
 
-    public double calculateClassAverageBySubject(Subject subject){
+    public double calculateClassAverageBySubject(Subject subject) {
+        if (students.isEmpty()) {
+            throw new ArithmeticException("No student are in the Class ! ");
+        }
+        double classAverage = 0;
+        int countStudent = 0;
+        for (Student student : students) {
+            double studentAverage = student.calculateSubjectAverage(subject);
+            if (studentAverage != 0) {
+                classAverage += studentAverage;
+                countStudent++;
+            }
+        }
+        if (countStudent == 0) {
+            throw new ArithmeticException("Nincsenek jegyek !");
+        }
+        return Math.round(100 * classAverage / countStudent) / 100.0;
+
 
     }
 
@@ -69,38 +86,44 @@ public class ClassRecords {
                 return student;
             }
         }
+        return null;
     }
 
     public String getClassName() {
         return className;
     }
 
-    private boolean isEmpty(String className) {
+    private boolean isEmpty(String str) {
+        return str == null|| "".equals(str.trim());
 
     }
 
     public String listStudentNames() {
         StringBuilder sb =new StringBuilder();
         for (Student s : students) {
-            sb.append(s.getName()).append (",")
+            sb.append(s.getName()).append (",");
         }
-
+        return sb.toString().substring(0,sb.toString().lastIndexOf(","));
     }
+
 
     public List<StudyResultByName>  listStudyResults() {
 
         List<StudyResultByName> resultList = new ArrayList<>();
         for (Student student : students) {
-            resultList.add(new StudyResultByName(student.calculateAverage(),student.getName()));
+            resultList.add(new StudyResultByName(student.getName(), student.calculateAverage()));
         }
         return resultList;
-
-
     }
 
     public boolean removeStudent(Student student) {
-
-
+        Student foundStudent = getStudentByNameOrNull(student.getName());
+        if (foundStudent != null) {
+            students.remove(foundStudent);
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public Student repetition()  {
