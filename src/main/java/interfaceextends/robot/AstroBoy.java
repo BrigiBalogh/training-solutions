@@ -1,0 +1,73 @@
+package interfaceextends.robot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AstroBoy implements FlyableRobot {
+
+    public final static long ALTITUDE = 5;
+
+    private Point position;
+    private int angle;
+    private List<Point> path = new ArrayList<>();
+
+
+    public AstroBoy(Point position) {
+        this.position = position;
+    }
+
+    @Override
+    public void moveTo(Point position) {
+        walkTo(position);
+    }
+
+    @Override
+    public void fastMoveTo(Point position) {
+        Point flyingPosition = new Point(position.getX(), position.getY(),ALTITUDE);
+        liftTo(ALTITUDE);
+        flyTo(flyingPosition);
+        liftTo(0);
+
+    }
+
+    @Override
+    public void rotate(int angle) {
+        this.angle =angle;
+
+
+    }
+
+    @Override
+    public void liftTo(long altitude) {
+        Point newPosition = new Point(this.position.getX(),this.position.getY(),altitude);
+        path.add(newPosition);
+        this.position = newPosition;
+    }
+
+    public void walkTo(Point position) {
+        path.add(position);
+        this.position =position;
+    }
+
+    public void flyTo(Point position) {
+        path.add(position);
+        this.position = position;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public int getAngle() {
+        return angle;
+    }
+
+    @Override
+    public List<Point> getPath() {
+        return path;
+    }
+
+    public static long getALTITUDE() {
+        return ALTITUDE;
+    }
+}
