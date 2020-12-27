@@ -20,17 +20,16 @@ public class Tutor {
 
     public boolean tutorTeachingSubject(Subject subject) {
 
-    if (taughtSubjects.isEmpty()){
-        throw new IllegalArgumentException("Nem tanít ilyen tantárgyat !");
-    }
+        if (taughtSubjects.isEmpty()) {
+            throw new IllegalArgumentException("Nem tanít ilyen tantárgyat !");
+        }
         int i = 0;
         for (Subject s : taughtSubjects) {
-            if (s.equals(subject)) {
-                i++;
+            if (s.getSubjectName().equals(subject.getSubjectName())) {
                 return true;
-            } else {
-                return false;
             }
         }
-
+        return false;
     }
+}
+
