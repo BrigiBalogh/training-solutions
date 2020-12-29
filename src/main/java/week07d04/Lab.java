@@ -12,9 +12,9 @@ public class Lab {
         this.title = title;
     }
 
-    public Lab(String title, boolean completed, LocalDate completedAt) {
+    public Lab(String title,LocalDate completedAt) {
         this.title = title;
-        this.completed = true;
+        completed = true;
         this.completedAt = completedAt;
     }
 
@@ -28,6 +28,18 @@ public class Lab {
         completed = true;
         completedAt = LocalDate.now();
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public LocalDate getCompletedAt() {
+        return completedAt;
     }
 
     @Override
