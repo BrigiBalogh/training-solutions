@@ -1,17 +1,23 @@
 package week09d03;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class santaClaus {
 
-    private List<Person> persons;
+    private List<Person> people;
 
     public santaClaus(List<Person> persons) {
-        this.persons = persons;
+        this.people = people;
     }
 
-   public Present getThroughChimneys() {
-        for (Person person : persons)
-
+   public void getThroughChimneys() {
+        for (Person p : people) {
+            p.setPresent();
+        }
    }
+
+    public List<Person> getPeople() {
+        return new ArrayList<>(people);
+    }
 }

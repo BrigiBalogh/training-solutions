@@ -1,5 +1,7 @@
 package week09d03;
 
+import java.util.Random;
+
 public class Person {
 
 
@@ -14,7 +16,25 @@ public class Person {
         this.age = age;
     }
 
-    public void setPresent(Present present) {
-        this.present = present;
+    public void setPresent() {
+        Random rnd = new Random();
+        if(age > 14){
+            int index =rnd.nextInt(Present.values().length-1)+1;
+            present = Present.values()[index];
+        }else {
+            present = Present.values()[rnd.nextInt(Present.values().length)];
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Present getPresent() {
+        return present;
     }
 }
