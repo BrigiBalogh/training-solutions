@@ -11,7 +11,7 @@ public class Product {
     }
 
     public boolean areTheyEqual(Product p){
-        return p.name == name && Math.max(p.code.length(),code.length())-Math.min(p.code.length(),code.length()) < 2 ? true : false;
+        return p.name.equals( name )&& Math.max(p.code.length(),code.length())-Math.min(p.code.length(),code.length()) < 2 ? true : false;
 
     }
 
