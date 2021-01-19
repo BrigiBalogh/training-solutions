@@ -63,13 +63,24 @@ public class Controller {
             office.printAreas();
         }
         if (menuItem == 5) {
-            office.printMeetingRoomsWithNames(String name);
+            System.out.println("Kérem adja meg a tárgyaló nevét !");
+            String name = scanner.nextLine();
+
+            office.printMeetingRoomsWithNames(name);
         }
         if (menuItem == 6) {
-            office.printMeetingRoomsContains(String part);
+            System.out.println("Kérem adja meg a tárgyaló nevének egyrészét !");
+            String part = scanner.nextLine();
+
+            office.printMeetingRoomsContains( part);
         }
         if (menuItem == 7) {
-            office.printMeetingRoomsContains(String part);
+            System.out.println("Mekkoránál legyen nagyobb a terület ?");
+            int area = scanner.nextInt();
+            scanner.nextLine();
+
+            office.printAreasLargerThan(area);
+        }
     }
 
     public static void main(String[] args) {

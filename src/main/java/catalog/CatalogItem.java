@@ -16,7 +16,7 @@ public class CatalogItem {
     }
 
     public int fullLengthAtOneItem (){
-        return;
+        return ;
     }
 
     public List<Feature> getFeatures() {
@@ -36,6 +36,7 @@ public class CatalogItem {
     }
 
     public boolean hasAudioFeature(){
+
 
     }
 

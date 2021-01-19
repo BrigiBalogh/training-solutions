@@ -17,9 +17,9 @@ public class AudioFeatures implements Feature {
     }
 
     public AudioFeatures(List<String> composer, int length, List<String> performers, String title) {
-        this.composer = new ArrayList<>(composer);
+        this.composer = composer;
         this.length = length;
-        this.performers = new ArrayList<>(performers);
+        this.performers = performers;
         this.title = title;
     }
 
@@ -30,8 +30,8 @@ public class AudioFeatures implements Feature {
 
 
     @Override
-    public List<String> getContributors() {
-        return null;
+    public List<String> getContributors(List<String>composer,List<String>performers) {
+        return ;
 
     }
 
