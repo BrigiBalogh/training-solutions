@@ -7,7 +7,12 @@ public class Catalog {
 
      List<CatalogItem> catalogItems = new ArrayList<>();
 
-     public void addItem(List<CatalogItem>catalogItems) {
+
+     public void addItem(CatalogItem item) {
+         catalogItems.add(item);
+     }
+
+     public void addAllItems(List<CatalogItem>catalogItems) {
          for (CatalogItem catalogItem : catalogItems) {
              catalogItems.add(catalogItem);
          }
@@ -15,13 +20,25 @@ public class Catalog {
 
     public double averagePageNumberOver(int numberOfPages) {
        double sum = 0;
+       int db = 0;
        for (CatalogItem catalogItem : catalogItems) {
-           sum += catalogItem.numberOfPagesAtOneItem();
+           int nop = catalogItem.numberOfPagesAtOneItem();
+           if (nop > numberOfPages) {
+               sum += nop;
+               db++;
+           }
        }
-       return sum;
+       return sum / db;
     }
 
     public void deleteItemByRegistrationNumber(String registrationNumber) {
+
+         for (int i = 0; i < catalogItems.size(); i++) {
+             if (catalogItems.get(i).getRegistrationNumber().equals(registrationNumber)) {
+                 catalogItems.remove(i);
+                 return;
+             }
+         }
 
     }
 
@@ -31,20 +48,42 @@ public class Catalog {
     }
 
     public int getAllPageNumber(){
-      return
+         int sum = 0;
+         for (CatalogItem catalogItem : catalogItems) {
+             int pag =catalogItem.numberOfPagesAtOneItem();
+             sum += pag;
+         }
+         return sum;
     }
 
     public List<CatalogItem> getAudioLibraryItems(){
-         return
+         List<CatalogItem> filteredAudioCatalogItems = new ArrayList<>();
+         for (CatalogItem catalogItem : catalogItems) {
+             if (catalogItem.hasAudioFeature()) {
+                 filteredAudioCatalogItems.add(catalogItem);
+             }
+         }
+         return filteredAudioCatalogItems;
 
     }
 
     public int getFullLength() {
-         return catalogItems.size() *
-
+         int sum = 0;
+         for (CatalogItem catalogItem : catalogItems) {
+             int len = catalogItem.fullLengthAtOneItem();
+             sum += len;
+         }
+         return sum;
     }
 
     public List<CatalogItem> getPrintedLibraryItems(){
+         List<CatalogItem>filteredPrintedCatalogItems = new ArrayList<>();
+         for (CatalogItem catalogItem : catalogItems) {
+             if (catalogItem.hasPrintedFeature()) {
+                 filteredPrintedCatalogItems.add(catalogItem);
+             }
+         }
+         return filteredPrintedCatalogItems;
 
     }
 }

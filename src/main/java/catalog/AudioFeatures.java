@@ -30,8 +30,11 @@ public class AudioFeatures implements Feature {
 
 
     @Override
-    public List<String> getContributors(List<String>composer,List<String>performers) {
-        return ;
+    public List<String> getContributors() {
+        List<String> ret = new ArrayList<>();
+        ret.addAll(composer);
+        ret.addAll(performers);
+        return ret;
 
     }
 

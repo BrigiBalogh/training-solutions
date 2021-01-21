@@ -16,7 +16,14 @@ public class CatalogItem {
     }
 
     public int fullLengthAtOneItem (){
-        return ;
+       int sum = 0;
+        for (Feature feature : features) {
+            if ( feature instanceof AudioFeatures) {
+              int length = ((AudioFeatures) feature).getLength();
+                sum += length;
+            }
+        }
+        return sum ;
     }
 
     public List<Feature> getFeatures() {
@@ -31,21 +38,44 @@ public class CatalogItem {
         return registrationNumber;
     }
 
-    public List<String> getContributors(){
-        return;
+    public List<String> getContributors() {
+        List<String> filteredAudiofeatures = new ArrayList<>();
+        List<String> filteredPrintedfeatures = new ArrayList<>();
+        for (Feature feature : features) {
+            if (feature.) {
+                filteredAudiofeatures.add(feature);
+            }
+        }
+
     }
 
     public boolean hasAudioFeature(){
 
-
+        for (Feature feature : features) {
+            if (feature instanceof AudioFeatures) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean hasPrintedFeature(){
-
+        for (Feature feature : features) {
+            if(feature instanceof PrintedFeatures) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int numberOfPagesAtOneItem(){
-        return
-
+        int sum = 0;
+        for (Feature feature : features) {
+            if (feature instanceof PrintedFeatures) {
+                int pages = ((PrintedFeatures)feature).getNumberOfPages();
+                sum += pages;
+            }
+        }
+        return sum;
     }
 }

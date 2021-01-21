@@ -56,7 +56,7 @@ public class Office {
     public void printMeetingRoomsContains(String part) {
         System.out.println("printAreasLargerThan");
         for (MeetingRoom meetingRoom : meetingRooms) {
-            if (meetingRoom.getName().equalsIgnoreCase().contains()) {
+            if (meetingRoom.getName().toLowerCase().contains(part.toLowerCase())) {
                 System.out.println(meetingRoom.getName() + "(" + meetingRoom.getWidth()
                         + "*" + meetingRoom.getLength() + "" + meetingRoom.getArea() + ")");
             }
