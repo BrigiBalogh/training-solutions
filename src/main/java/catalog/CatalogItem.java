@@ -42,8 +42,8 @@ public class CatalogItem {
         List<String> filteredAudiofeatures = new ArrayList<>();
         List<String> filteredPrintedfeatures = new ArrayList<>();
         for (Feature feature : features) {
-            if (feature.) {
-                filteredAudiofeatures.add(feature);
+            if (feature. {
+                filteredAudiofeatures.add();
             }
         }
 
