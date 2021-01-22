@@ -20,6 +20,7 @@ public class SearchCriteria {
 
     public boolean hasContributor(){
 
+
     }
 
     public boolean hasTitle(){

@@ -42,8 +42,11 @@ public class Catalog {
 
     }
 
-    List<CatalogItem> findByCriteria(SearchCriteria searchCriteria){
-         List<CatalogItem>
+    public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria){
+         List<CatalogItem> filteredItem = new ArrayList<>();
+         for ( CatalogItem catalogitem : catalogItems) {
+             if (SearchCriteria.createByBoth())
+         }
 
     }
 
