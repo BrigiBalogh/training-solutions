@@ -41,13 +41,28 @@ public class Catalog {
          }
 
     }
+    private boolean containsTitle(CatalogItem catalogitem, SearchCriteria searchCriteria)  {
+        if (searchCriteria.hasTitle()) {
+            List<Feature> features = catalogitem.getFeatures();
+            for (Feature feature : features) {
+                if (searchCriteria.getTitle().equals(feature.getTitle())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
 
     public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria){
          List<CatalogItem> filteredItem = new ArrayList<>();
          for ( CatalogItem catalogitem : catalogItems) {
-             if (SearchCriteria.createByBoth())
+             if ((!searchCriteria.hasContributor() || catalogitem.getContributors().contains(searchCriteria.getContributor())) &&
+                 containsTitle(catalogitem, searchCriteria)) {
+                     filteredItem.add(catalogitem);
+             }
          }
-
+        return filteredItem;
     }
 
     public int getAllPageNumber(){

@@ -39,14 +39,11 @@ public class CatalogItem {
     }
 
     public List<String> getContributors() {
-        List<String> filteredAudiofeatures = new ArrayList<>();
-        List<String> filteredPrintedfeatures = new ArrayList<>();
+        List<String> contributors = new ArrayList<>();
         for (Feature feature : features) {
-            if (feature. {
-                filteredAudiofeatures.add();
-            }
+            contributors.addAll(feature.getContributors());
         }
-
+        return contributors;
     }
 
     public boolean hasAudioFeature(){
