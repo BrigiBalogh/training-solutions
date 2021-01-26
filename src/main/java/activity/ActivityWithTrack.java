@@ -2,18 +2,17 @@ package activity;
 
 public class ActivityWithTrack implements Activity{
 
-
-    private ActivityType activityType;
     private Track track;
+    private ActivityType activityType;
 
-    public ActivityWithTrack(ActivityType activityType, Track track) {
-        this.activityType = activityType;
+    public ActivityWithTrack(Track track, ActivityType activityType) {
         this.track = track;
+        this.activityType = activityType;
     }
 
     @Override
     public double getDistance() {
-        return null;
+        return track.getDistance();
     }
 
     @Override
