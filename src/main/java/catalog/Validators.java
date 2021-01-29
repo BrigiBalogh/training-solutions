@@ -7,6 +7,7 @@ public class Validators {
     public static boolean isBlank(String str){
         if (str.equals(null) || str.equals("")) {
             return false;
+
         }
         return true;
 
