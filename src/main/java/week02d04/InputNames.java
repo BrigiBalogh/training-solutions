@@ -13,7 +13,7 @@ public class InputNames {
             arrayOfNames[i] = scanner.nextLine();
         }
 
-        for (int j; j < arrayOfNames.length; j++) {
+        for (int j = 0; j < arrayOfNames.length; j++) {
             System.out.println((j+1) + ".name :"+arrayOfNames[j]);
         }
     }

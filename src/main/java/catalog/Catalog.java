@@ -19,6 +19,9 @@ public class Catalog {
      }
 
     public double averagePageNumberOver(int numberOfPages) {
+         if (numberOfPages <= 0) {
+             throw new IllegalArgumentException("Page number must be positive");
+         }
        double sum = 0;
        int db = 0;
        for (CatalogItem catalogItem : catalogItems) {
@@ -27,6 +30,9 @@ public class Catalog {
                sum += nop;
                db++;
            }
+       }
+       if (db == 0) {
+           throw new IllegalArgumentException("No page");
        }
        return sum / db;
     }

@@ -25,7 +25,7 @@ class AudioFeaturesTest {
     @Test
     public void testCreateWithComposer() {
 
-        AudioFeatures audioFeatures = new AudioFeatures("Ride the Lightning", 300, Arrays.asList("Metallica"), Arrays.asList("James Hetfield"));
+        AudioFeatures audioFeatures = new AudioFeatures("Ride the Lightning", 300, Arrays.asList("Metallica", "James Hetfield"));
 
         assertEquals("Ride the Lightning", audioFeatures.getTitle());
         assertEquals(300, audioFeatures.getLength());
@@ -56,7 +56,5 @@ class AudioFeaturesTest {
             new AudioFeatures("Ride the Lightning", -2, new ArrayList<>());
         });
     }
-
-}
 
 }

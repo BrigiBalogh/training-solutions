@@ -10,13 +10,14 @@ public class AudioFeatures implements Feature {
     private List<String> performers;
     private String title;
 
-    public AudioFeatures(int length, List<String> performers, String title) {
+    public AudioFeatures(String title ,int length, List<String> performers) {
         this.length = length;
         this.performers = new ArrayList<>(performers);
+        this.composer = new ArrayList<>();
         this.title = title;
     }
 
-    public AudioFeatures(List<String> composer, int length, List<String> performers, String title) {
+    public AudioFeatures(String title, int length, List<String> composer, List<String> performers) {
         this.composer = composer;
         this.length = length;
         this.performers = performers;

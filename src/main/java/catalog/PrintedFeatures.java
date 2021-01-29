@@ -9,7 +9,7 @@ public class PrintedFeatures implements Feature {
   private String title;
 
 
-    public PrintedFeatures(List<String> authors, int numberOfPages, String title) {
+    public PrintedFeatures(String title, int numberOfPages, List<String> authors) {
         this.authors = authors;
         this.numberOfPages = numberOfPages;
         this.title = title;

@@ -1,15 +1,10 @@
 package catalog;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static catalog.SearchCriteria.createByBoth;
-import static catalog.SearchCriteria.createByContributor;
-import static catalog.SearchCriteria.createByTitle;
+import static catalog.SearchCriteria.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -17,20 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CatalogTest {
 
 
-    public CatalogItem catalogItem1 = new CatalogItem("R-1", 300,
+    public CatalogItem catalogItem1 = new CatalogItem("R-1", 300, Arrays.asList(
             new AudioFeatures("Night Visions", 185, Arrays.asList("Dan Raynolds"), Arrays.asList("Imagine Dragons")),
             new PrintedFeatures("Harry Potter", 600, Arrays.asList("J.K. Rowling")),
-            new AudioFeatures("Piece of Mind", 200, Arrays.asList("Steve Harris"), Arrays.asList("Iron Maiden"))
+            new AudioFeatures("Piece of Mind", 200, Arrays.asList("Steve Harris"), Arrays.asList("Iron Maiden")))
 
     );
 
     public CatalogItem catalogItem2 = new CatalogItem("R- 2", 300,
-            new PrintedFeatures("Harry Potter", 500, Arrays.asList("J.K. Rowling"))
+            Arrays.asList(new PrintedFeatures("Harry Potter", 500, Arrays.asList("J.K. Rowling")))
     );
 
 
-    public CatalogItem catalogItem3 = new CatalogItem("R-3", 300,
-            new AudioFeatures("Californication", 100, Arrays.asList("Flea"), Arrays.asList("RHCP"))
+    public CatalogItem catalogItem3 = new CatalogItem("R-3", 300, Arrays.asList(
+            new AudioFeatures("Californication", 100, Arrays.asList("Flea"), Arrays.asList("RHCP")))
     );
 
     public Catalog catalog = new Catalog();

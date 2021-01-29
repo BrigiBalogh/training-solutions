@@ -6,7 +6,7 @@ public class SearchCriteria {
     public String contributor;
     public String title;
 
-    public static SearchCriteria createByBoth(String contributor,String title) {
+    public static SearchCriteria createByBoth(String title, String contributor) {
         return new SearchCriteria(contributor, title);
     }
 

@@ -33,14 +33,14 @@ public class ShoppingBasket {
     public void checkout() {
         basket.clearBasket();
     }
-    public void removeMostExpensiveItem(){
+    public String removeMostExpensiveItem(){
         Item mostExpensiveItem =basket.getItems().get(0);
         for (Item item : basket.getItems()) {
             if (item.getNettoPrice() > mostExpensiveItem.getNettoPrice()) {
                 mostExpensiveItem = item;
             }
         }
-        return  mostExpensiveItem.getBarcode()
+        return  mostExpensiveItem.getBarcode();
     }
 
 }

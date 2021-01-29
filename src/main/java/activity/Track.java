@@ -22,6 +22,7 @@ public class Track {
             }
             if ( trackPoint.getCoordinate().getLongitude() > maxLon) {
                 maxLon = trackPoint.getCoordinate().getLongitude();
+            }
         }
         return new Coordinate(maxLat, maxLon) ;
     }
@@ -37,8 +38,9 @@ public class Track {
                 if ( trackPoint.getCoordinate().getLongitude() < minLon) {
                     minLon = trackPoint.getCoordinate().getLongitude();
                 }
-                return new Coordinate(minLat, minLon) ;
+
             }
+        return new Coordinate(minLat, minLon) ;
     }
 
     public double getDistance() {
@@ -49,7 +51,7 @@ public class Track {
                 prev = trackPoint;
             }
             return distanceSum;
-    }11
+    }
 
     public double getFullDecrease() {
         double decreaseSum = 0;

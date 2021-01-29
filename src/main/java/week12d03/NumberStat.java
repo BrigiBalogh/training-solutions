@@ -29,16 +29,20 @@ public class NumberStat {
             } else {
                 throw new IllegalStateException("Wrong list");
             }
-
-            for (int i = 1; i < sortedNumbers.size() - 1; i++) {
-                if (sortedNumbers.get(i -1) != sortedNumbers.get(i) && sortedNumbers.get(i + 1) != sortedNumbers.get(i)) {
-                    return sortedNumbers.get(i);
-                }
-            }
-            if (sortedNumbers.get(sortedNumbers.size()-1) != sortedNumbers.get(sortedNumbers.size()-2)) {
-                return sortedNumbers.get(sortedNumbers.size()-1);
+        }
+        // Legalább 3 elemű
+        if (sortedNumbers.get(0) != sortedNumbers.get(1)) {
+            return sortedNumbers.get(0);
+        }
+        for (int i = 1; i < sortedNumbers.size() - 1; i++) {
+            if (sortedNumbers.get(i -1) != sortedNumbers.get(i) && sortedNumbers.get(i + 1) != sortedNumbers.get(i)) {
+                return sortedNumbers.get(i);
             }
         }
+        if (sortedNumbers.get(sortedNumbers.size()-1) != sortedNumbers.get(sortedNumbers.size()-2)) {
+            return sortedNumbers.get(sortedNumbers.size()-1);
+        }
+
         throw new IllegalStateException("Wrong list");
     }
 

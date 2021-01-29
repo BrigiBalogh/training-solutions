@@ -9,7 +9,7 @@ public class CatalogItem {
    private int price;
    private String registrationNumber;
 
-    public CatalogItem(List<Feature> features, int price, String registrationNumber) {
+    public CatalogItem(String registrationNumber, int price, List<Feature> features) {
         this.features = features;
         this.price = price;
         this.registrationNumber = registrationNumber;
@@ -75,4 +75,12 @@ public class CatalogItem {
         }
         return sum;
     }
+ public List<String> getTitles() {
+        List<String> titles = new ArrayList<>();
+        for (Feature feature : features) {
+            titles.add(feature.getTitle());
+        }
+        return titles;
+ }
+
 }
