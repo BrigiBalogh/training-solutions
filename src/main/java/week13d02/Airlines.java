@@ -21,7 +21,7 @@ public class Airlines {
                 flights.add(obj);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Can not read file.");
         }
     }
 
