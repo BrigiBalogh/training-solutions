@@ -1,6 +1,5 @@
 package states;
 
-import javax.imageio.IIOException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,11 +19,11 @@ public class StateRegister {
             String line;
             while((line = br.readLine()) != null) {
                 String[] temp = line.split("-");
-                State s = new State(temp[0],temp[1] );
+                State s = new State (temp[0], temp[1] );
                 states.add(s);
             }
-        }catch (IIOException e) {
-            throw new IllegalStateException("Can not read file !", e);
+        } catch (IOException e) {
+            throw new IllegalStateException("Cannot read file!", e);
         }
     }
 

@@ -16,7 +16,7 @@ public class SchoolRecordsManager {
 
         try(BufferedReader br= Files.newBufferedReader(file)) {
             String line;
-            while ((line = br.readLine()) != null ) {
+            while((line = br.readLine()) != null ) {
                 String[] temp = line.split("");
                 List<Integer> grades = new ArrayList<>();
                 for (int i = 1; i < temp.length; i++) {
@@ -25,8 +25,8 @@ public class SchoolRecordsManager {
                 Student s = new Student(temp[0],grades );
                 students.add(s);
             }
-        }catch (IIOException e) {
-            throw new IllegalStateException("Cannot read file !");
+        } catch (IIOException e) {
+            throw new IllegalStateException("Cannot read file !", e);
         }
     }
 
