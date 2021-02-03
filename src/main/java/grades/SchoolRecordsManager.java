@@ -1,7 +1,7 @@
 package grades;
 
-import javax.imageio.IIOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class SchoolRecordsManager {
                 Student s = new Student(temp[0],grades );
                 students.add(s);
             }
-        } catch (IIOException e) {
+        } catch (IOException e) {
             throw new IllegalStateException("Cannot read file !", e);
         }
     }
