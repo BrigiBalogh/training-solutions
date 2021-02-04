@@ -25,18 +25,18 @@ public class Register {
 
 
 
-    public double average(Path file) {
+    public void  average(Path file) {
         try {
-            List<String> myfile = Files.readAllLines(file);
+            List<String> myFile = Files.readAllLines(file);
             double sum = 0;
-            for (String s : myfile) {
+            for (String s : myFile) {
                 sum += Double.parseDouble(s);
             }
-            Files.writeString(file,"average :" + (sum / myfile.size()), StandardOpenOption.APPEND);
+            Files.writeString(file,"average :" + (sum / myFile.size()), StandardOpenOption.APPEND);
         } catch (IOException e) {
             throw new IllegalStateException("Can not write file.", e);
         }
-        return ;
+
 
     }
 }
