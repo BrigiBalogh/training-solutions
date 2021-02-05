@@ -1,10 +1,11 @@
-package exceptionmulticatch.converter
+package exceptionmulticatch.converter;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AnswerStat {
 
-    private static final Logger LOGGER =LoggerFactory.gettLogger(AnswerStat.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnswerStat.class);
 
     private BinaryStringConverter binaryStringConverter;
 

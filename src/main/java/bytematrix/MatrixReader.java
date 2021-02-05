@@ -33,7 +33,9 @@ public class MatrixReader {
             int ones = 0;
 
             for (int j = 0; j < myMatrix.size(); j++) {
-                if (myMatrix.get(j)[i] == 48) {
+//                byte[] kivett = myMatrix.get(j);
+//                kivett[i]
+                if (myMatrix.get(j)[i] == '0') { // 48
                     zeros++;
                 } else {
                     ones++;

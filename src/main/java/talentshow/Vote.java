@@ -17,7 +17,7 @@ public class Vote {
     public int getNumber() {
         return number;
     }
-
+    // increment: eggyel növelni
     public void incNumber() {
         this.number += 1;
     }

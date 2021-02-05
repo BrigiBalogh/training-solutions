@@ -36,10 +36,10 @@ public class Polynomial {
         return coefficients;
     }
 
-    private double[] convertCoefficientStrs(String[] coefficients) {
+    private double[] convertCoefficientStrs(String[] coefficientStrs) {
         double[] coefficients = new double[coefficientStrs.length];
         for (int j = 0; j < coefficientStrs.length; j++) {
-            coefficients[j] = Double.parseDouble(CoefficientStrs[j]);
+            coefficients[j] = Double.parseDouble(coefficientStrs[j]);
         }
         return coefficients;
     }
