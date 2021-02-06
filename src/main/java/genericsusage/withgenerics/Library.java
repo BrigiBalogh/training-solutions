@@ -13,11 +13,8 @@ public class Library {
         if(books.isEmpty()) {
             throw new IllegalArgumentException("Argument should not be empty");
         }
-        Object o = books.get(0);
-        if (!(o instanceof  Book) {
-            throw new ClassCastException("Not a book.");
-        }
-        return (Book) o;
+
+        return books.get(0);
     }
 
 }
