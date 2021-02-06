@@ -8,10 +8,7 @@ public class Library {
     List<Book> books;
 
     public void add(List<Book> books) {
-        for (Book b : books) {
-            if ( !b.getAuthor().equals() && !)
-
-        }
+        Book searchBook =new Book();
 
 
     }
