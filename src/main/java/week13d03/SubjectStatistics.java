@@ -13,8 +13,8 @@ public class SubjectStatistics {
 
     public void readFromFile(String fileName) {
         try(BufferedReader br = Files.newBufferedReader(Path.of(fileName))) {
-            String line;
-            while (line = br.readLine() != null) {
+            String[] block =new String[4] ;
+            while ((block[0] = br.readLine()) != null) {
 
             }
 
@@ -22,4 +22,44 @@ public class SubjectStatistics {
             throw new IllegalStateException("Cannot read the file !");
         }
     }
+
+    private Subject processBlock(BufferedReader br, String[] block) throws IOException {
+        for (int i = 1; i < 4; i++) {
+            block[i] = br.readLine();
+        }
+        return new Subject(block[0], block[1], block[2],Integer.parseInt(block[3]));
+    }
+
+    public int lessonsTaughtCalculate(String name) {
+
+        int sumHours = 0;
+        for (Subject s : data) {
+            if (s.getName().equals(name)) {
+                sumHours += s.getNumberOfLessons();
+            }
+        }
+        return sumHours;
+    }
+
+  /* public int sumLessonsOfTeacherFromFile(String file; String teacherName ) {
+        int sum = 0;
+
+        try (BufferedReader br = Files.newBufferedReader(Path.of(file))) {
+            String line;
+            while(line = br.readLine() != null) {
+                if (line.equals(teacherName)) {
+                    skipTwoLines(br);
+                    sum += Integer.parseInt(br.readLine());
+                }
+            }
+        }catch (IOException ioe) {
+            throw new IllegalStateException("Cannot read file !", ioe);
+        }
+        return sum;
+    }
+
+    private void skipTwoLines(BufferedReader br) throws IOException {
+        br.readLine();
+        br.readLine();
+    } */
 }
