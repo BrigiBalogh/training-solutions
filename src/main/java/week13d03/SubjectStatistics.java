@@ -15,6 +15,7 @@ public class SubjectStatistics {
         try(BufferedReader br = Files.newBufferedReader(Path.of(fileName))) {
             String[] block =new String[4] ;
             while ((block[0] = br.readLine()) != null) {
+                data.add(processBlock(br,block));
 
             }
 
@@ -25,7 +26,12 @@ public class SubjectStatistics {
 
     private Subject processBlock(BufferedReader br, String[] block) throws IOException {
         for (int i = 1; i < 4; i++) {
-            block[i] = br.readLine();
+            String line;
+            if (br.readLine() != null) {
+                block[i] = br.readLine();
+            } else {
+                throw new IOException("Wrong file !");
+            }
         }
         return new Subject(block[0], block[1], block[2],Integer.parseInt(block[3]));
     }
@@ -47,10 +53,14 @@ public class SubjectStatistics {
         try (BufferedReader br = Files.newBufferedReader(Path.of(file))) {
             String line;
             while(line = br.readLine() != null) {
+                skipTwoLines(br);
+
                 if (line.equals(teacherName)) {
-                    skipTwoLines(br);
+
                     sum += Integer.parseInt(br.readLine());
                 }
+
+
             }
         }catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file !", ioe);
