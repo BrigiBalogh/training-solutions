@@ -21,5 +21,27 @@ public class Shopping {
         }
     }
 
+    public Set<String> getProductsByIdAlphabetical(String id) {
+        return shoppings.get(id);
+    }
+
+    public int shellByProductsName(String productName) {
+        int count =0;
+        for (Set p : shoppings.values()) {
+            if (p.contains(productName)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int itemsByShoppingList(String id) {
+        return shoppings.get(id).size();
+    }
+
+    public void statistics() {
+
+    }
+
 
 }
