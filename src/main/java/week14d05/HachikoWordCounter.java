@@ -2,26 +2,58 @@ package week14d05;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 
 public class HachikoWordCounter {
 
     public Map<String, Integer> countWords(BufferedReader reader, String ...words){
-        String line;
-        try{
-            while ((line = reader.readLine()) != null)  {
 
-            }
-        }catch (IOException ioe) {
-            throw new IllegalStateException("Cannot read file !");
+        try{
+            return processLines(reader, words);
+
+        }
+        catch (IOException ioe) {
+            throw new IllegalStateException("Cannot read file !", ioe);
         }
 
     }
 
+    public Map<String, Integer> processLines(BufferedReader reader, String...words)
+         throws IOException {
+        Map<String, Integer> result = new HashMap<>();
+        String line;
+            while ((line = reader.readLine()) != null)  {
+                countWordsInLine(line, result, words);
+            }
+            return result;
+    }
+
+    public void countWordsInLine(String line, Map<String, Integer> result, String ...words) {
+        for (String word : words) {
+            if (line.toLowerCase().contains(word.toLowerCase())) {
+                incrementCounter(result,word);
+            }
+        }
+    }
+
+    private void incrementCounter(Map<String, Integer> result, String word) {
+
+        if (!result.containsKey(word)) {
+            result.put(word, 1);
+        }
+        else {
+            Integer value = result.get(word);
+            result.put(word, value + 1);
+        }
+    }
+
     public static void main(String[] args) {
-        try(BufferedReader reader = Files.newBufferedReader(Path.of("hachiko.srt"))) {
+        try(BufferedReader reader = Files.newBufferedReader(Path.of("hachiko.srt"),
+                Charset.forName("windows-1250"))) {
             System.out.println(new HachikoWordCounter().countWords(reader,
                     "Hachiko", "haza", "pályudvar", "jó"));
         } catch (IOException ioe) {
