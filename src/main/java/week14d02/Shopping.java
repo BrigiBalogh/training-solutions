@@ -27,7 +27,7 @@ public class Shopping {
 
     public int shellByProductsName(String productName) {
         int count =0;
-        for (Set p : shoppings.values()) {
+        for (Set <String>p : shoppings.values()) {
             if (p.contains(productName)) {
                 count++;
             }
@@ -39,9 +39,19 @@ public class Shopping {
         return shoppings.get(id).size();
     }
 
-    public void statistics() {
-
+    public Map<String, Integer> statistics() {
+        Map<String, Integer> ret = new HashMap<>();
+        for (Set<String>p : shoppings.values()) {
+            for ( String product : p) {
+               if ( ret.containsKey(product)) {
+                  int count = ret.get(product);
+                  count++;
+                  ret.put(product,count);
+               } else {
+                   ret.put(product,1);
+               }
+            }
+        }
+        return ret;
     }
-
-
 }
