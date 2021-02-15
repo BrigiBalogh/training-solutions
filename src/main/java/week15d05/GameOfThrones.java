@@ -16,7 +16,6 @@ public class GameOfThrones {
         String line;
         Map<String, Integer> numberOfBattles = new HashMap<>();
         while ((line = reader.readLine())  != null) {
-            System.out.println(line);
             List<String> houses = getHousesFromFile(line);
             countHouses(numberOfBattles, houses);
         }
