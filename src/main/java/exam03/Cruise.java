@@ -32,11 +32,11 @@ public class Cruise {
     }
 
     public  double getPriceForPassenger(Passenger passenger) {
-        double price= 500;
+        double price= 0;
         for (Passenger p : passengers) {
             if(p.getName().equals(passenger))
             {
-                price = price * p.getCruiseClass().getValue();
+                price = basicPrice * p.getCruiseClass().getValue();
             }
         }
        return price;
