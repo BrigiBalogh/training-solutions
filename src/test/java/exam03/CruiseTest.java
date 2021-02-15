@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;4
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CruiseTest {
     private Boat boat = new Boat("WetDreams", 5);

@@ -42,10 +42,16 @@ public class Cruise {
        return price;
     }
 
-    public  Passenger findPassengerByName(String name )
-    {
+    public  Passenger findPassengerByName(String name ) {
+            for (Passenger p : passengers) {
+                if (p.getName().equals(name)) {
 
+                }
+            }
     }
+
+
+
     public List<String> getPassengerNamesOrdered()
     {
 
