@@ -32,7 +32,14 @@ public class Cruise {
     }
 
     public  double getPriceForPassenger(Passenger passenger) {
-
+        double price= 500;
+        for (Passenger p : passengers) {
+            if(p.getName().equals(passenger))
+            {
+                price = price * p.getCruiseClass().getValue();
+            }
+        }
+       return price;
     }
 
     public  Passenger findPassengerByName(String name )
@@ -50,5 +57,21 @@ public class Cruise {
     public Map<CruiseClass, Integer> countPassengerByClass()
     {
 
+    }
+
+    public Boat getBoat() {
+        return boat;
+    }
+
+    public LocalDate getSailing() {
+        return sailing;
+    }
+
+    public double getBasicPrice() {
+        return basicPrice;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
     }
 }
