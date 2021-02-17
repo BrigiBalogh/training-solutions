@@ -1,6 +1,6 @@
-package collectionsIterator;
+package collectionscomp;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private int regNumber;
     private String title;
@@ -24,5 +24,13 @@ public class Book {
         return author;
     }
 
+    @Override
+    public String toString() {
+        return regNumber + "" + title + "" + author;
+    }
 
+    @Override
+    public int compareTo(Book o) {
+        return this.title.compareTo(o.title);
+    }
 }

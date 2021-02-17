@@ -1,4 +1,4 @@
-package collectionsIterator;
+package collectionsiterator;
 
 public class MissingBookException  extends RuntimeException {
 
