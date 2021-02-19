@@ -32,7 +32,7 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        return this.id.compareTo(o.id);
+        return Integer.valueOf(this.id).compareTo(o.id);
     }
 
     @Override

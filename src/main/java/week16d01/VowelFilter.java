@@ -9,18 +9,23 @@ import java.util.List;
 
 public class VowelFilter {
 
-    public static final String VOWELS = "aeiouáéóüúíő";
+    public static final String VOWELS = "aáeéiíoóöőuúüű";
 
     public List<String> filterVowels(BufferedReader reader) throws IOException {
+        List<String> ret = new ArrayList<>();
         String line;
         while ((line = reader.readLine())  != null) {
-            String s = line;
+            String s = line.toLowerCase();
+            String t = "";
             for (char c: s.toCharArray()) {
-                if ()
+                //if (VOWELS.indexOf(c) == -1) {
+                if (!VOWELS.contains(c+"")) {
+                    t += c;
+                }
             }
-
-
+            ret.add(t);
         }
+        return ret;
     }
 
     public static void main(String[] args) {

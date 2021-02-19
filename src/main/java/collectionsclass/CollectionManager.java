@@ -1,6 +1,7 @@
 package collectionsclass;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CollectionManager {
@@ -12,9 +13,21 @@ public class CollectionManager {
     }
 
     public List<Book> createUnmodifiableLibrary() {
+        return Collections.unmodifiableList(library);
     }
-    public List<Book> reverseLibrary() //az eredeti lista másolatán dolgozik!
-    public Book getFirstBook() //a legrégebbi (legkisebb id) könyvet adja vissza
-    public Book getLastBook() // a legújabb (legnagyobb id) könyvet adja vissza
+    public List<Book> reverseLibrary() {
+        List <Book> books = new ArrayList<>(library);
+        Collections.sort(books);
+        Collections.reverse(books);
+        return books;
+    }
+    public Book getFirstBook() {
+       return Collections.min(library);
+
+
+    }
+    public Book getLastBook() {
+        return Collections.max(library);
+    }
 
 }

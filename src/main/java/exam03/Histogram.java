@@ -9,20 +9,18 @@ public class Histogram {
 
     public String createHistogram(BufferedReader reader) throws IOException {
         String line;
-        String  star = "";
+        String  histo = "";
         while ((line = reader.readLine())  != null)
         {
            Integer convert = Integer.parseInt(line);
-            star = "";
+           String star = "";
            for (int i = 1; i <= convert;i++)
            {
                star += "*";
            }
-            System.out.println(star);
-            return star;
-
+           histo += star + "\n";
         }
-        return null;
+        return histo;
     }
 
     public static void main(String[] args) {

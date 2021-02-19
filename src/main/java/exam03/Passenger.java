@@ -1,6 +1,6 @@
 package exam03;
 
-public class Passenger {
+public class Passenger implements Comparable<Passenger>{
 
     private String name;
     CruiseClass cruiseClass;
@@ -16,5 +16,10 @@ public class Passenger {
 
     public CruiseClass getCruiseClass() {
         return cruiseClass;
+    }
+
+    @Override
+    public int compareTo(Passenger o) {
+        return this.name.compareTo(o.name);
     }
 }

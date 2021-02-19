@@ -1,5 +1,6 @@
 package week16d01;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class CanoeRental {
@@ -7,7 +8,7 @@ public class CanoeRental {
     CanoeType canoeType;
     LocalDateTime startTime;
     LocalDateTime endTime;
-
+    private static final int BASE_PRICE = 5000;
 
     public CanoeRental(String name, CanoeType canoeType, LocalDateTime startTime) {
         this.name = name;
@@ -36,6 +37,17 @@ public class CanoeRental {
     }
 
     public double calculateRentalSum(){
+        if (endTime == null) {
+            return 0;
+        } else {
+            Duration diff = Duration.between(startTime, endTime);
+            int seconds = (int)diff.getSeconds();
+            int startedHours = seconds / 3600 + (seconds % 3600 > 0 ? 1 : 0);
+            return startedHours * BASE_PRICE * canoeType.getValue();
+        }
+    }
 
+    public boolean isActive() {
+        return endTime == null;
     }
 }

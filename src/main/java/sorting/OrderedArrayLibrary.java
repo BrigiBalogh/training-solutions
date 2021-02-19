@@ -29,7 +29,7 @@ public class OrderedArrayLibrary {
 
         Book[] books = new Book[bookArray.length];
         System.arraycopy(bookArray,0,books,0,bookArray.length);
-        Arrays.sort(books);
+        Arrays.sort(books, titleComparator);
         return books;
 
     }
