@@ -5,7 +5,6 @@ public class CdvCheck {
 
     public boolean check(String s)
     {
-
       double d = 0;
       int count = 0;
       char c = 0;

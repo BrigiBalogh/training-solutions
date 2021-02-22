@@ -17,11 +17,19 @@ public class OwlCounter {
             countOfOwl.put(parts[0],number);
         }
     }
-        
+
         
 }
 
     public int getNumberOfOwls(String s)
     {
-
+     Map<String, Integer> counts = new HashMap<>();
+        for (Map.Entry entry: counts.entrySet())
+        {
+            if(counts.containsKey(s))
+            {
+                return entry.getValue();
+            }
+        }
+        return
     }
