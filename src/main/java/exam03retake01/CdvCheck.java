@@ -7,35 +7,34 @@ public class CdvCheck {
     {
 
       double d = 0;
-      int seged = 0;
-      char c;
+      int count = 0;
+      char c = 0;
         for(int i=0; i<s.length();i++)
         {
             if (i < 9)
             {
-                seged ++;
+                count ++;
                  c =s.charAt(0);
-                Integer b = seged*c;
+                Integer b = count*c;
                 d += b;
             }
             else
                 {
                     c =s.charAt(0);
                 }
-
-
         }
         d = d % 11;
         String e =String.valueOf(d);
-        String[] tomb = e.split(".");
-        e = tomb[1];
-        char tomb2 = e.charAt(0);
-
-        if (  tomb2 == c)
+        String[] array = e.split(".");
+        e = array[1];
+        char arraylast = e.charAt(0);
+        if (  arraylast == c)
         {
-
+           return true;
         }
-
-       return
+        else
+            {
+                return false;
+            }
     }
 }
