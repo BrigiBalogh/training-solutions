@@ -2,32 +2,25 @@ package exam03;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class Histogram {
 
+    public static final String STAR = "*";
+    public static final String BREAK_LINE= "\n";
+
+
     public String createHistogram(BufferedReader reader) throws IOException {
+        StringBuilder sb = new StringBuilder();
         String line;
-        String  histo = "";
         while ((line = reader.readLine())  != null)
         {
-           Integer convert = Integer.parseInt(line);
-           String star = "";
-           for (int i = 1; i <= convert;i++)
-           {
-               star += "*";
-           }
-           histo += star + "\n";
+          int number = Integer.parseInt(line);
+  //         for (int i = 0; i < number;i++) {
+  //             sb.append(STAR);
+  //         }
+           sb.append(STAR.repeat(number));
+           sb.append(BREAK_LINE);
         }
-        return histo;
-    }
-
-    public static void main(String[] args) {
-        try (BufferedReader reader = Files.newBufferedReader(Path.of("histogram.txt"))) {
-            new Histogram().createHistogram(reader);
-        } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read file", ioe);
-        }
+        return sb.toString();
     }
 }

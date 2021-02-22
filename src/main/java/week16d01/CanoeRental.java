@@ -36,14 +36,18 @@ public class CanoeRental {
         this.endTime = endTime;
     }
 
+    public double calculateRentalSum(LocalDateTime endTime) {
+        Duration diff = Duration.between(this.startTime, endTime);
+        int seconds = (int)diff.getSeconds();
+        int startedHours = seconds / 3600 + (seconds % 3600 > 0 ? 1 : 0);
+        return startedHours * BASE_PRICE * canoeType.getValue();
+    }
+
     public double calculateRentalSum(){
         if (endTime == null) {
             return 0;
         } else {
-            Duration diff = Duration.between(startTime, endTime);
-            int seconds = (int)diff.getSeconds();
-            int startedHours = seconds / 3600 + (seconds % 3600 > 0 ? 1 : 0);
-            return startedHours * BASE_PRICE * canoeType.getValue();
+            return calculateRentalSum(this.endTime);
         }
     }
 

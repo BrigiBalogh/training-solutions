@@ -1,5 +1,6 @@
 package exam03;
 
+import java.text.Collator;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -17,27 +18,15 @@ public class Cruise {
     }
 
     public void bookPassenger(Passenger passenger) {
-        /*int sum = 0;
-        for (Passenger p : passengers) {
-            sum ++;
-        }*/
-        if (passengers.size() < boat.getMaxPassengers()) {
+        if (passengers.size() <= boat.getMaxPassengers()) {
             passengers.add(passenger);
         }
-
-
+        throw new IllegalArgumentException("Too many passengers");
     }
+
 
     public double getPriceForPassenger(Passenger passenger) {
         return basicPrice * passenger.getCruiseClass().getValue();
-        /*double price= 0;
-        for (Passenger p : passengers) {
-            if(p.getName().equals(passenger))
-            {
-                price = basicPrice * p.getCruiseClass().getValue();
-            }
-        }
-       return price;*/
     }
 
     public Passenger findPassengerByName(String name) {
@@ -46,7 +35,7 @@ public class Cruise {
                 return p;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Not found with name :" + name);
     }
 
 
@@ -56,7 +45,7 @@ public class Cruise {
       for (Passenger p : passengers) {
           ret.add(p.getName());
       }
-        Collections.sort(ret);
+        Collections.sort(ret, Collator.getInstance(new Locale("hu", "HU")));
       return ret;
     }
     public List<String> getPassengerNamesOrdered2() {
@@ -115,6 +104,8 @@ public class Cruise {
       }
       return sum;
     }
+
+
     public Map<CruiseClass, Integer> countPassengerByClass()
     {
 
