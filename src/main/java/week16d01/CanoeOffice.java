@@ -20,7 +20,7 @@ public class CanoeOffice {
                return cr;
            }
        }
-       return null;
+       throw new IllegalArgumentException("Can not find name" + name);
     }
 
     public void closeRentalByName(String name, LocalDateTime endTime) {
