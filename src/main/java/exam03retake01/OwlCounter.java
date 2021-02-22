@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OwlCounter {
+public class OwlCounter
+{
 
     private Map<String ,Integer> countOfOwl = new HashMap<>();
 
@@ -18,18 +19,17 @@ public class OwlCounter {
         }
     }
 
-        
-}
-
-    public int getNumberOfOwls(String s)
+    public Map<String, Integer> getNumberOfOwls(String s)
     {
      Map<String, Integer> counts = new HashMap<>();
+     int c = 0;
         for (Map.Entry entry: counts.entrySet())
         {
             if(counts.containsKey(s))
             {
-                return entry.getValue();
+               entry.getValue();
             }
         }
-        return
+        return counts;
     }
+}
