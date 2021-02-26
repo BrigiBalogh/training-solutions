@@ -6,8 +6,9 @@ public class Contact {
     private String email;
 
 
-    public Contact(String name) {
+    public Contact(String name, String email) {
         this.name = name;
+        this.email = email;
     }
 
     public String getName() {
@@ -16,5 +17,9 @@ public class Contact {
 
     public String getEmail() {
         return email;
+    }
+
+    public boolean hasCriteria(String s) {
+        return name.equals(s) || email.equals(s);
     }
 }

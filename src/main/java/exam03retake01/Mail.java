@@ -32,4 +32,22 @@ public class Mail {
     public String getMessage() {
         return message;
     }
+
+    public boolean hasCriteria(String criteria) {
+        String[] array = criteria.split(":");
+        String key = array[0];
+        switch(key) {
+            case "from":
+                return from.hasCriteria(array[1]);
+            case "to":
+                for (Contact t : to) {
+                    if (t.hasCriteria(array[1])) {
+                        return true;
+                    }
+                }
+                return false;
+            default:
+                return subject.contains(criteria) || message.contains(criteria);
+        }
+    }
 }

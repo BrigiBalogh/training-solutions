@@ -7,6 +7,21 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+/*   Készítsd el a week12d03.NumberStat osztályt melyben legyen egy metódus,
+ ami paraméterül vár egy egész számokból álló listát.
+ Add vissza azt a számot amelyik pontosan egyszer szerepel a listában.
+ Ha több ilyen szám van akkor a kisebbet!
+ Ellenőrizd, hogy olyan listát fogadunk el, ami legalább 1 elemű,
+  ha a lista nem ilyen, dobj kivételt! pl: {1,1,5,3,4,5,6,5,6,4,1,6,5,4} A megoldás: 3
+  Bónusz: Módosítsd az osztályt. Legyen egy egész számokból álló lista attribútuma.
+   A fent megírt metódus ezen a listán dolgozzon. A lista elemeit fájlból töltsük fel.
+   A file úgy néz ki, hogy egy sorban három szám van vesszővel elválasztva. Tehát:
+
+1,1,4
+2,3,5
+2,2,5  */
+
+
 
 public class NumberStat {
 

@@ -19,17 +19,18 @@ public class OwlCounter
         }
     }
 
-    public Map<String, Integer> getNumberOfOwls(String s)
+    public Integer getNumberOfOwls(String county)
     {
-     Map<String, Integer> counts = new HashMap<>();
+        return countOfOwl.get(county);
+     /*Map<String, Integer> counts = new HashMap<>();
      int c = 0;
         for (Map.Entry entry: counts.entrySet())
         {
-            if(counts.containsKey(s))
+            if(counts.containsKey(county))
             {
                entry.getValue();
             }
         }
-        return counts;
+        return counts;*/
     }
 }
