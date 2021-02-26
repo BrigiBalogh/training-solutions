@@ -8,7 +8,7 @@ public class CdvCheck {
     public boolean check(String s) {
 
         if (s.length() != LENGTH || notNumber(s)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("The number is wrong .");
         }
 
       int sum = 0;
