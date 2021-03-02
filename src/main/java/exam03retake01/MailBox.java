@@ -23,32 +23,19 @@ public class MailBox {
         return ret;
     }
 
-    public List<Mail> findByCriteria(String criteria)
-    {
+    public List<Mail> findByCriteria(String criteria) {
+
         List<Mail> ret = new ArrayList<>();
         String[] array = criteria.split(":");
-        if (array[0].equals("from"))
-        {
-            for (int i = 0; i < mails.size();i++)
-            {
-                Mail m = mails.get(i);
-                if (m.getFrom().getEmail().equals(array[1]) ||
-                    m.getFrom().getName().equals(array[1])) {
-                    ret.add(m);
-                }
-            }
+        if (array[0].equals("from")) {
+            helper(ret, array);
         }
+
         else if (array[0].equals("to"))
             {
                 for (int i = 0; i < mails.size();i++) {
                     Mail m = mails.get(i);
-                    for (Contact to : m.getTo()) {
-                        if (to.getName().equals(array[1]) ||
-                            to.getEmail().equals(array[1])) {
-                            ret.add(m);
-                            break;
-                        }
-                    }
+                    resemble(ret, array, m);
                 }
             }
         else {
@@ -62,6 +49,27 @@ public class MailBox {
         }
 
         return ret;
+    }
+
+    private void resemble(List<Mail> ret, String[] array, Mail m) {
+        for (Contact to : m.getTo()) {
+            if (to.getName().equals(array[1]) ||
+                to.getEmail().equals(array[1])) {
+                ret.add(m);
+                break;
+            }
+        }
+    }
+
+    private void helper(List<Mail> ret, String[] array) {
+        for (int i = 0; i < mails.size(); i++) {
+
+            Mail m = mails.get(i);
+            if (m.getFrom().getEmail().equals(array[1]) ||
+                    m.getFrom().getName().equals(array[1])) {
+                ret.add(m);
+            }
+        }
     }
 
     public List<Mail> getMails() {

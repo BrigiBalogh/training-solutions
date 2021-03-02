@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 
 public class CanoeRental {
     private String name;
-    CanoeType canoeType;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
+    private CanoeType canoeType;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private static final int BASE_PRICE = 5000;
 
     public CanoeRental(String name, CanoeType canoeType, LocalDateTime startTime) {

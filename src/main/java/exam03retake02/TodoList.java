@@ -39,6 +39,12 @@ public class TodoList {
     }
 
     public void deleteCompleted() {
+        for (int i = 0; i < todos.size(); i++) {
+            if (todos.get(i).getState().equals(State.COMPLETED)) {
+                todos.remove(i);
+                i--;
+            }
+        }
     }
 
     public void addTodo(Todo todo) {
