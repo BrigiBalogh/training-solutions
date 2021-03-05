@@ -17,9 +17,28 @@ public class BalatonStorm {
             reader.readLine();
             String line;
             while ((line = reader.readLine()) != null && !line.contains("]")) {
-                String secondLine = reader.readLine();
-                String thirdLine = reader.readLine();
-                // thirdLine: "allomas"
+                List<String> stations = new ArrayList<>();
+
+                for (int i= 0; i < 9; i++) {
+                    stations.add(reader.readLine());
+                    //String l = reader.readLine();
+                    //stations.add(l);
+                }
+                String thirdLine = stations.get(1);
+                String[] parts = thirdLine.split(":");
+                String[] nameParts = parts[1].split("\"");
+                String stationName = nameParts[1];
+
+                String seventhLine = stations.get(5);
+                String[] levelParts = seventhLine.split(":");
+                String trimmedLevel = levelParts[1].trim();
+                int level = Integer.parseInt(trimmedLevel.substring(0, trimmedLevel.length()-1));
+                if (level >= 3) {
+                    ret.add(stationName);
+                }
+
+              /* String secondLine = reader.readLine();
+               String thirdLine = reader.readLine();
                 String[] parts = thirdLine.split(":");
                 String[] nameParts = parts[1].split("\"");
                 String stationName = nameParts[1];
@@ -27,7 +46,6 @@ public class BalatonStorm {
                 String fifthLine = reader.readLine();
                 String sixthLine = reader.readLine();
                 String seventhLine = reader.readLine();
-                // seventhLine: "level"
                 String[] levelParts = seventhLine.split(":");
                 String trimmedLevel = levelParts[1].trim();
                 int level = Integer.parseInt(trimmedLevel.substring(0, trimmedLevel.length()-1));
@@ -36,7 +54,7 @@ public class BalatonStorm {
                 String tenthLine = reader.readLine();
                 if (level >= 3) {
                     ret.add(stationName);
-                }
+                } */
             }
             Collections.sort(ret, Collator.getInstance(new Locale("hu", "HU")));
             return ret;

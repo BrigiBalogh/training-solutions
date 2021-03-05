@@ -14,7 +14,10 @@ public class InputNames {
         }
 
         for (int j = 0; j < arrayOfNames.length; j++) {
-            System.out.println((j+1) + ".name :"+arrayOfNames[j]);
+            System.out.println((j+1) + ".name :"+arrayOfNames[j] + "\n");
         }
     }
 }
+  /*  Hozz létre egy InputNames Java osztályt, melynek van egy main metódusa. Ciklusban kérj be öt nevet!
+   A neveket tárold el egy tömbben! Írd ki a tömb tartalmát, sortöréssel elválasztva
+    (írd bele, hogy hanyadik elem - 1-től sorszámozva)! */

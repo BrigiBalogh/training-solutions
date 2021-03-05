@@ -47,7 +47,7 @@ public class CanoeRental {
         if (endTime == null) {
             return 0;
         } else {
-            return calculateRentalSum(this.endTime);
+            return calculateRentalSum(endTime);
         }
     }
 

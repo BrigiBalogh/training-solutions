@@ -11,8 +11,20 @@ public class Product {
     }
 
     public boolean areTheyEqual(Product p){
-        return p.name.equals( name )&& Math.max(p.code.length(),code.length())-Math.min(p.code.length(),code.length()) < 2 ? true : false;
+        return p.name.equals( name )&& Math.max(p.code.length(),code.length())-Math.min(p.code.length(),
+                code.length()) < 2 ? true : false;
 
+    }
+
+    public boolean areTheyEqual2(Product p) {
+        if (!p.name.equals(name)) {
+            return false;
+        }
+        if (p.code.length() > code.length()) {
+            return p.code.length() - code.length() <= 1;
+        } else {
+            return code.length() - p.code.length() <= 1;
+        }
     }
 
     public String getName() {
@@ -35,3 +47,9 @@ public class Product {
 
     }
 }
+ /*  Írj egy Product oszályt String name és String code attribútumokkal! Legyen egy konstruktora
+ a két attribútummal! Legyen egy areTheyEqual() metódusa, mely kap egy másik Product példányt,
+ és eldönti, hogy azonos-e az adott példánnyal. Két termék akkor egyezik, ha a nevük megegyezik.
+
+        Bónusz: szigorúbb egyelőség a feltételre: a két termék kódjának hosszának különbsége
+         maximum egy karakter lehet. */

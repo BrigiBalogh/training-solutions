@@ -16,7 +16,7 @@ public class Operation {
         rightOperand = Integer.parseInt(right);
     }
 
-    // leftOperand = Integer.parseInt(expression.substring()0,indexOf("+"));
+    // leftOperand = Integer.parseInt(expression.substring(0,indexOf("+"));
     //   rightOperand = Integer.parseInt(expression.substring(expression.indexOf("+")+1);
 
 

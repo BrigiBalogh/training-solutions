@@ -1,5 +1,6 @@
 package timesheet;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class TimeSheetItem {
@@ -7,27 +8,34 @@ public class TimeSheetItem {
     private Employee employee;
     private Project project;
     private LocalDateTime beginDate;
+    private LocalDateTime endDate;
 
-    public TimeSheetItem(Employee employee, Project java, LocalDateTime of, LocalDateTime of1) {
+    public TimeSheetItem(Employee employee, Project project, LocalDateTime beginDate, LocalDateTime endDate) {
+        this.employee = employee;
+        this.project = project;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
     }
 
     public LocalDateTime getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(LocalDateTime beginDate) {
-        this.beginDate = beginDate;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public Project getEmployee() { return null;
+    public Project getProject() {
+        return project;
     }
 
-    public Project getProject() { return null;
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 
-    public LocalDateTime getEndDate() { return null;
-    }
-
-    public long hoursBetweenDates() { return 0;
+    public long hoursBetweenDates() {
+        long hours =0;
+        Duration.between(beginDate, endDate).toHours();
+        return hours;
     }
 }

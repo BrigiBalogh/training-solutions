@@ -4,10 +4,11 @@ import java.util.List;
 
 public class ListCounter {
 
-    public int countALetters(List<String> list) {
+    public int countALetters(List<String> words) {
         int count = 0;
-        for (String b: list ) {
-            if (b.toLowerCase().startsWith("a")) {
+
+        for (String s: words ) {
+            if (s.toLowerCase().startsWith("a")) {
                 count ++;
             }
         }

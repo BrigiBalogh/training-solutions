@@ -38,9 +38,7 @@ public class MailBox {
                     resemble(ret, array, m);
                 }
             }
-        else {
-            for (int i = 0; i < mails.size();i++) {
-                Mail m = mails.get(i);
+        else { for (Mail m : mails ) {
                 if (m.getSubject().contains(criteria) ||
                         m.getMessage().contains(criteria)) {
                     ret.add(m);
