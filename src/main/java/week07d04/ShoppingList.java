@@ -43,3 +43,12 @@ public class ShoppingList {
         return result;
     }
 }
+
+
+/*  A ShoppingList osztályba írj egy long calculateSum(String path) metódust,
+ mely a paraméterként átadott fájlból beolvassa a bevásárlólista tartalmát, és összegzi az árat!
+ A fájl a következő formátumú sorokat tartalmazza: kenyér;2;30, ahol az első a termék neve,
+  a második a darabszám, a harmadik az egységár. Azaz ezen sor esetén 2 * 30 = 60 értékkel kell számolni.
+
+
+ */

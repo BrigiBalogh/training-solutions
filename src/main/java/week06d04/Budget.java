@@ -15,7 +15,6 @@ public class Budget {
     public List<Item> getItemsByMonth(int date) {
         if (date < 1 || date > 12) {
             throw new IllegalArgumentException( "Invalid date !");
-
         }
         List<Item> m = new ArrayList<>();
 

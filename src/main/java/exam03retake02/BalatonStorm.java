@@ -59,7 +59,7 @@ public class BalatonStorm {
             Collections.sort(ret, Collator.getInstance(new Locale("hu", "HU")));
             return ret;
         } catch (IOException ex) {
-            throw new IllegalArgumentException("file cannot be read");
+            throw new IllegalArgumentException("file cannot be read",ex);
         }
     }
 }

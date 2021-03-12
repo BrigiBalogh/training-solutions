@@ -13,4 +13,8 @@ public class WordEraserTest {
         String result = "körte barack szilva körte birsalma";
         assertEquals(result,m.eraseWord(original,"alma" ));
     }
+
+    @Test
+    void eraseWord() {
+    }
 }

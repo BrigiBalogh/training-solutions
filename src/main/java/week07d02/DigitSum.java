@@ -2,11 +2,11 @@ package week07d02;
 
 public class DigitSum {
 
-    public int sumOFDigits(int mum) {
+    public static int sumOFDigits(int mum) {
         int result = 0;
         String digits = String.valueOf(mum);
         for(int i =0; i< digits.length();i++) {
-            digits.charAt(i);
+            result += digits.charAt(i) - '0';
         }
         return result;
     }
@@ -18,6 +18,11 @@ public class DigitSum {
             x =x / 10;
         }
         return sum;
+    }
+
+    public static void main(String[] args) {
+        int sum = sumOFDigits(123);
+        System.out.println(sum);
     }
 }
 

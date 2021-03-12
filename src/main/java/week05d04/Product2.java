@@ -15,11 +15,19 @@ public class Product2 {
        }
     }
 
-    public double convertPrice(Currency currency) {
-        double sum = 0;
-        //if ()
-        return sum;
-    }
+
+        public double convertPrice(Currency currency) {
+            if (currency == this.currency) {
+                return price;
+            } else if (this.currency == Currency.HUF && currency == Currency.USD) {
+                return price / CURRENT_RATE_HUF;
+            } else if (this.currency == Currency.USD && currency == Currency.HUF){
+                return price * CURRENT_RATE_HUF;
+            } else {
+                throw new IllegalArgumentException("unsupported currency: " + currency);
+            }
+        }
+
 
     public static void main(String[] args) {
         Product2 product2 = new Product2(1000,Currency.USD);
@@ -32,7 +40,7 @@ public class Product2 {
             Product2 product4 = new Product2(1000, Currency.EUR);
             System.out.println(product4.convertPrice(Currency.HUF));
         } catch (IllegalArgumentException ex) {
-            System.out.println("Megvan az IllegalArgumentException!");
+            System.out.println("Invalid currency!");
         }
 
     }
