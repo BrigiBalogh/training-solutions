@@ -22,7 +22,7 @@ class SearchTest {
         Search search = new Search();
         List<Integer>indices = search.getIndexesOfChar("alma",'l');
         assertEquals(1, indices.size());
-        assertEquals(1, indices.get(1));
+        assertEquals(1, indices.get(0));
     }
 
     @Test

@@ -38,5 +38,7 @@ public class SaveInputTest {
         saveInput.write(file, List.of("alma", "körte"));
 
         String result = Files.readString(file);
+
+        assertEquals("alma"+System.lineSeparator()+"körte"+System.lineSeparator(), result);
     }
 }

@@ -1,18 +1,40 @@
 package week08d01;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Sultan {
 
-    public boolean[] getOpenDoors() {
-
+    public boolean[] getOpenDoors2() {
         boolean[] result = new boolean[100];
-        for (int i = 0; i < 100; i++) {
-            for (int j =i + 1; j <= 100; j++) {
-                if ((i+1) % j== 0) {
-                    result[i] = !result[i];
+
+        for (int day = 1; day <= 100; day++) {
+            for (int cell = 0; cell < result.length; cell++) {
+                if ((cell+1) % day == 0) {
+                    result[cell] = !result[cell];
                 }
             }
         }
         return result;
+    }
+
+    public List<Integer> getOpenDoorsList() {
+        boolean[] result = getOpenDoors2();
+        List<Integer> ret = new ArrayList<>();
+        for (int i = 0; i < result.length; i++) {
+            if (result[i]) {
+                ret.add(i+1);
+            }
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        Sultan sultan = new Sultan();
+        boolean[] res = sultan.getOpenDoors2();
+        System.out.println(Arrays.toString(res));
+        System.out.println(sultan.getOpenDoorsList());
     }
 }
 

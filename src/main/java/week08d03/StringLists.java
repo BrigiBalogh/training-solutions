@@ -18,6 +18,10 @@ public class StringLists {
         return result;
 
     }
+    /* Készíts week08d03 csomagban egy StringLists osztályt és benne egy
+    stringListsUnion(List<String> first, List<String> second) metódust,
+     mely két string listát vár paraméterül és visszaadja az uniójukat.
+     Az úniónak minden elemet tartalmaznia kell mindkét listából, de egy elem nem szerepelhet kétszer! */
 
     public List<String> shortestWords(List<String> words) {
         List<String> result = new ArrayList<>();
@@ -35,3 +39,8 @@ public class StringLists {
         return result;
     }
 }
+
+/* Készíts a week08d03 csomagban egy StringLists osztályt és benne egy
+ shortestWords(List<String> words) metódust, mely paraméterül kap egy String listát és a legrövidebb szavakat
+  vissza adja belőle egy Listában. PL :{"aaa", "aa", "bb", "cccc", "dd"}
+   Itt a legrövidebb szavak az "aa", "bb", "dd". */

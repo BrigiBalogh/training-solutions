@@ -10,7 +10,6 @@ public class Lab {
 
     public Lab(String title) {
         this.title = title;
-        completed = false;
     }
 
     public Lab(String title,LocalDate completedAt) {

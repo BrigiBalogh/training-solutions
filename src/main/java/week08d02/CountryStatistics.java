@@ -36,7 +36,7 @@ public class CountryStatistics {
     }
 
     private Country createCountryFromLine(String line) {
-        String[] temp = line.split("");
+        String[] temp = line.split(" ");
         return new Country(temp[0], Integer.parseInt(temp[1]),
                 Integer.parseInt(temp[2]), Integer.parseInt(temp[3]));
     }
