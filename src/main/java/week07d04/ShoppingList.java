@@ -23,7 +23,6 @@ public class ShoppingList {
             for (String line : lines) {
                 long result = calculateLineSum(line);
                 sum += result;
-
             }
 
         }catch(IOException ioe) {

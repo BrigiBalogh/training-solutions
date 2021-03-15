@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Sultan {
 
-    public boolean[] getOpenDoors2() {
+    public boolean[] getOpenDoors() {
         boolean[] result = new boolean[100];
 
         for (int day = 1; day <= 100; day++) {
@@ -20,7 +20,7 @@ public class Sultan {
     }
 
     public List<Integer> getOpenDoorsList() {
-        boolean[] result = getOpenDoors2();
+        boolean[] result = getOpenDoors();
         List<Integer> ret = new ArrayList<>();
         for (int i = 0; i < result.length; i++) {
             if (result[i]) {
@@ -32,7 +32,7 @@ public class Sultan {
 
     public static void main(String[] args) {
         Sultan sultan = new Sultan();
-        boolean[] res = sultan.getOpenDoors2();
+        boolean[] res = sultan.getOpenDoors();
         System.out.println(Arrays.toString(res));
         System.out.println(sultan.getOpenDoorsList());
     }

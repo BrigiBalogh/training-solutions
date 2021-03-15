@@ -26,7 +26,7 @@ public class SaveInput {
     }
 
     public Path readFileName() {
-        System.out.println("Kérem, adja meg a fájlnevét !");
+        System.out.println("Kérem, adja meg a fájl nevét !");
         String fileName = scanner.nextLine();
         Path path = Path.of(fileName);
         return path;
