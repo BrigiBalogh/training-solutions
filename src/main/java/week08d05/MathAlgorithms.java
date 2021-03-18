@@ -33,7 +33,7 @@ public class MathAlgorithms {
         int result = 1;
         for( int i = 2; i<= a && i<= b; i++) {
             if (a % i == 0 && b % i == 0 ) {
-                i = result;
+                result = i;
             }
         }
         return result;
