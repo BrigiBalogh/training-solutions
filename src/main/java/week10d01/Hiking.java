@@ -11,9 +11,11 @@ public class Hiking {
         }
         double sum =0;
         for (int i= 1; i < heights.size(); i++){
+            double h = heights.get(i);
+            double hi = heights.get(i - 1);
 
-            if (heights.get(i) > heights.get(i-1))  {
-                sum += heights.get(i) -heights.get(i-1);
+            if (h > hi )  {
+                sum += h -hi;
             }
         }
         return sum;

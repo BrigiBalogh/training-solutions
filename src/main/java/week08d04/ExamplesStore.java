@@ -12,12 +12,11 @@ public class ExamplesStore {
 
     public List<String> getTitlesOfExamples() {
     try (BufferedReader reader = new BufferedReader(new InputStreamReader(FileReader.class.getResourceAsStream("examples.md")))) {
-      // new FileReader().readLines(reader);//
 
         List<String> examples = new ArrayList<>();
         String line;
         while ((line = reader.readLine()) != null && line.contains("#")) {
-            examples.add(line);
+            examples.add(line.substring(2));
         }
         return examples;
     } catch (IOException ioe) {
