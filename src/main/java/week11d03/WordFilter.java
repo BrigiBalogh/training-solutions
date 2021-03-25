@@ -10,8 +10,9 @@ public class WordFilter {
         List<String> filteredWords = new ArrayList<>();
         String s = String.valueOf(c);
         for (String word : words) {
-            if (word.contains(s));
-            filteredWords.add(word);
+            if (word.contains(s)) {
+                filteredWords.add(word);
+            }
         }
         return filteredWords;
     }

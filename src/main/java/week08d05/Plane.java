@@ -8,7 +8,7 @@ public class Plane {
 
     private static final char OCEAN = '0';
     private static final char ISLAND = '1';
-    private static final int EOF = -1;
+    private static final int EOF = -1; // end of file
 
     public int  foundLongestOceanPart(String file) {
         //Path file = Path.of("map.txt");

@@ -11,6 +11,8 @@ import java.util.List;
 
 public class HikingFile {
 
+
+
     public HikingStat getPlusElevation(InputStream inputStream) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             List<Double> elevation = new ArrayList<>();

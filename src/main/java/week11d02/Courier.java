@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Courier {
 
-    List<Ride> rides = new ArrayList<>();
+    private List<Ride> rides = new ArrayList<>();
+
+
 
 
     public void addRide(Ride ride) {

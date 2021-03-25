@@ -34,4 +34,6 @@ public class Ride {
     public int getDistance() {
         return distance;
     }
+
+
 }
