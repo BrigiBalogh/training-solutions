@@ -2,8 +2,13 @@ package exerciseexam;
 
 public class DeveloperSoftware  extends Software {
 
+
+    public DeveloperSoftware(String name, int price) {
+        super(name, price);
+    }
+
     @Override
     public void increasePrice() {
-        super.increasePrice();
+        price *= 1.1;
     }
 }

@@ -1,7 +1,5 @@
 package week10d01;
 
-import week08d05.Plane;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,12 +22,18 @@ public class HikingFile {
               elevation.add(height);
           }
 
-          for (int i = 0; i+1 < elevation.size(); i++) {
-              // elevation.get(i) vs elevation.get(i+1)
-              if (elevation.get(i) < elevation.get(i+1)) {
+          double sumAscent = 0;
+          double sumDescent = 0;
 
+          for (int i = 0; i+1 < elevation.size(); i++) {
+              if (elevation.get(i) < elevation.get(i+1)) {
+                  sumAscent += elevation.get(i+1)-elevation.get(i);
+              }
+              if (elevation.get(i) > elevation.get(i+1)) {
+                  sumDescent += elevation.get(i) - elevation.get(i+1);
               }
           }
+          return new HikingStat(sumAscent,sumDescent);
 
         } catch (IOException e) {
             throw new IllegalStateException("File cannot be read.", e);

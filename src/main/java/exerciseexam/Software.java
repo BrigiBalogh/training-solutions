@@ -2,8 +2,8 @@ package exerciseexam;
 
 public abstract class Software {
 
-    private String name;
-    private int price;
+    protected String name;
+    protected int price;
 
     public abstract  void increasePrice();
 
