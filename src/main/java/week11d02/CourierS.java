@@ -52,7 +52,6 @@ public class CourierS {
                 freeDays.add(i + 1);
             }
         }
-
         return freeDays;
     }
 
@@ -72,7 +71,6 @@ public class CourierS {
                 freeDays.add(i + 1);
             }
         }
-
         return freeDays;
     }
 

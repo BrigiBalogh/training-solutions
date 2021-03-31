@@ -15,6 +15,5 @@ public class NameLength {
             }
         }
         return new ArrayList<>(lengths);
-
     }
 }

@@ -3,7 +3,7 @@ package week12d01;
 public class GradeRounder {
 
 
-    int[]  roundGrades(int[] grades)  {
+   public int[]  roundGrades(int[] grades)  {
         for (int i = 0; i < grades.length; i++ ) {
             if(grades[i] > 40) {
                 int number = grades[i] / 5;
