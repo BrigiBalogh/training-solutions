@@ -9,20 +9,28 @@ import java.util.List;
 
 public class HikingFile {
 
-
-
-    public HikingStat getPlusElevation(InputStream inputStream) {
+    private List<Double> readFile(InputStream inputStream) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             List<Double> elevation = new ArrayList<>();
 
-          String  line;
-          while ((line = br.readLine()) != null) {
-              String[] parts = line.split(",");
-              double height =Double.parseDouble( parts[2]);
-              elevation.add(height);
-          }
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                double height = Double.parseDouble(parts[2]);
+                elevation.add(height);
+            }
+            return elevation;
+        } catch (IOException e) {
+            throw new IllegalStateException("File cannot be read.", e);
+        }
+    }
 
-          double sumAscent = 0;
+    public HikingStat getPlusElevation(InputStream inputStream) {
+
+
+          List<Double> elevation = readFile(inputStream);
+
+        double sumAscent = 0;
           double sumDescent = 0;
 
           for (int i = 0; i+1 < elevation.size(); i++) {
@@ -35,8 +43,6 @@ public class HikingFile {
           }
           return new HikingStat(sumAscent,sumDescent);
 
-        } catch (IOException e) {
-            throw new IllegalStateException("File cannot be read.", e);
-        }
+
     }
 }

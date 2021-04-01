@@ -3,7 +3,13 @@ package week10d05;
 import java.util.Arrays;
 
 public class Calculator {
-
+    private int mathMin(int a, int b) {
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
 
     public void findMinSum(int[] arr) {
 

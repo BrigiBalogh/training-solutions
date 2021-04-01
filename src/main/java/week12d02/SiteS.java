@@ -34,4 +34,14 @@ public class SiteS implements Comparable <SiteS>{
     public int compareTo(SiteS o) {
         return this.width-o.width;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(String.valueOf(numberOfSite));
+        sb.append(")");
+        sb.append(String.valueOf(color).repeat(width));
+        return sb.toString();
+    }
 }

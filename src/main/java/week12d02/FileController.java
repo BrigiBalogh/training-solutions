@@ -22,12 +22,21 @@ public class FileController {
                 (FileReader.class.getResourceAsStream("fence.txt")))) {
 
             String line;
+            lastEvenNumber = 0;
+            lastOddNumber = -1;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(LINE_SEPARATOR);
-                int site = Integer.parseInt(parts[0]);
+                int side = Integer.parseInt(parts[0]);
                 int width = Integer.parseInt(parts[1]);
                 char color =parts[2].charAt(0);
-                sites.add(new Site(site,width, color));
+                if (side == 0) {
+                    lastEvenNumber += 2;
+                    lastNumber = lastEvenNumber;
+                } else {
+                    lastOddNumber += 2;
+                    lastNumber = lastOddNumber;
+                }
+                sites.add(new SiteS(side,width, color, lastNumber));
             }
 
         }catch(IOException ioe) {
@@ -43,14 +52,15 @@ public class FileController {
 
     public int lastSiteNumber(){
         SiteS lastSite =sites.get(sites.size()-1);
-            if (lastSite.getSide() == 0) {
-                lastEvenNumber += 2;
-                lastNumber = lastEvenNumber;
-            } else {
-                lastOddNumber += 2;
-                lastNumber = lastOddNumber;
+        return lastSite.getNumberOfSite();
+    }
+
+    public void printOddSide() {
+        for (SiteS site : sites) {
+            if (site.getSide() == 1) {
+                System.out.print(site);
             }
         }
-        return last
+        System.out.println();
     }
 }
