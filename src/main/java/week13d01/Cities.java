@@ -59,7 +59,7 @@ public class Cities {
 
     public static void main(String[] args) {
         Cities cities = new Cities();
-        try(BufferedReader reader = Files.newBufferedReader(Path.of("irányitoszamok-varosok-2021.csv"))){
+        try(BufferedReader reader = Files.newBufferedReader(Path.of("iranyitoszamok-varosok-2021.csv"))){
            City first = cities.findFirstCity(reader);
             System.out.println(first);
 

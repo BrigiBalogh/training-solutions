@@ -16,7 +16,6 @@ public class SubjectStatistics {
             String[] block =new String[4] ;
             while ((block[0] = br.readLine()) != null) {
                 data.add(processBlock(br,block));
-
             }
 
         } catch (IOException ioe) {

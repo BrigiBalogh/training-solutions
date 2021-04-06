@@ -52,7 +52,7 @@ public class CityOperations {
 
     public static void main(String[] args) {
         try (BufferedReader bufferedReader =
-                     Files.newBufferedReader(Path.of("iranyitoszamok-varosok-2021.csv"))){
+                     Files.newBufferedReader(Path.of("week13d01/iranyitoszamok-varosok-2021.csv"))){
             String city = new CityOperations().findCityWithMaxLength(bufferedReader);
         }
         catch(IOException ioe) {
