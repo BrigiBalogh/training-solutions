@@ -34,8 +34,10 @@ public class Cities {
         try {
             skipHeader(reader);
             while ((line = reader.readLine()) != null) {
-                City city = parseCity(line);
-                cities.add(city);
+                if (!line.isEmpty()) {
+                    City city = parseCity(line);
+                    cities.add(city);
+                }
             }
         }
         catch (IOException ioe) {
@@ -46,10 +48,13 @@ public class Cities {
 
     private City parseCity(String line) {
         String[] parts = line.split(LINE_SEPARATOR);
+        City city;
         if (parts.length > 2) {
-            String part= parts[INDEX_OF_PART];
+            String part = parts[INDEX_OF_PART];
+            city = new City(parts[INDEX_OF_POSTCODE], parts[INDEX_OF_CITY], part);
+        } else {
+            city = new City(parts[INDEX_OF_POSTCODE], parts[INDEX_OF_CITY]);
         }
-        City city = new City(parts[INDEX_OF_POSTCODE], parts[INDEX_OF_CITY], parts[INDEX_OF_PART]);
         return city;
     }
 

@@ -15,7 +15,7 @@ public class TemplateMerger {
             StringBuilder sb = new StringBuilder();
             String line = Files.readString(file);
             for (Employee employee : employees) {
-                String replaced =line.replace("{name}",employee.getName());
+                String replaced =line.replace("{nev}",employee.getName());
                 replaced = replaced.replace("{ev}",Integer.toString(employee.getYearOfBirth()));
                 sb.append(replaced).append("\n");
             }
@@ -25,7 +25,9 @@ public class TemplateMerger {
         }
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
+
         Path path = Path.of("employee-template.txt");
+
     }
 }

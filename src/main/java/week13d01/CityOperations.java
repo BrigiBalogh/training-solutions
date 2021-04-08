@@ -25,10 +25,12 @@ public class CityOperations {
         number++;
         String line;
         while((line = reader.readLine()) != null) {
-            number++;
-            String name = getNameFromLine(line, number);
-            if (name.length() > maxCityName.length() ) {
-                maxCityName = name;
+            if (!line.isEmpty()) {
+                number++;
+                String name = getNameFromLine(line, number);
+                if (name.length() > maxCityName.length()) {
+                    maxCityName = name;
+                }
             }
         }
         if (maxCityName.equals(" ")) {
@@ -37,8 +39,8 @@ public class CityOperations {
         return maxCityName;
     }
 
-    private void skipHeader(BufferedReader reader){
-        reader.lines();
+    private void skipHeader(BufferedReader reader) throws IOException {
+        reader.readLine();
     }
 
     private String getNameFromLine(String line, int number) {
@@ -46,14 +48,15 @@ public class CityOperations {
         if (parts.length <= 1) {
             throw new IllegalArgumentException("Illegal line" + number + ":" + line);
         }
-        String name = parts[1];
+        String name = parts[1].trim();
         return name;
     }
 
     public static void main(String[] args) {
         try (BufferedReader bufferedReader =
-                     Files.newBufferedReader(Path.of("week13d01/iranyitoszamok-varosok-2021.csv"))){
+                     Files.newBufferedReader(Path.of("iranyitoszamok-varosok-2021.csv"))){
             String city = new CityOperations().findCityWithMaxLength(bufferedReader);
+            System.out.println(city);
         }
         catch(IOException ioe) {
             throw new IllegalStateException("Can not read file");
