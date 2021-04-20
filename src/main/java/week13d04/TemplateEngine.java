@@ -14,10 +14,16 @@ public class TemplateEngine {
     public void merge(BufferedReader reader, Map<String, Object> values, BufferedWriter writer) {
         String line;
         try{
-            while ((line = reader.readLine()) != null);
+            while ((line = reader.readLine()) != null) {
+                for (Map.Entry<String, Object> entry : values.entrySet()) {
+                    line = line.replace(
+                            "{"+entry.getKey()+"}",
+                            entry.getValue().toString());
+                }
 
-            writer.write(line);
-            writer.write("\n");
+                writer.write(line);
+                writer.write("\n");
+            }
 
         }catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file !", ioe);
@@ -37,6 +43,7 @@ public class TemplateEngine {
             BufferedWriter writer = new BufferedWriter(sw);
             BufferedReader reader = Files.newBufferedReader(template);
             new TemplateEngine().merge(reader,values, writer);
+            writer.flush();
 
         }catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file !", ioe);

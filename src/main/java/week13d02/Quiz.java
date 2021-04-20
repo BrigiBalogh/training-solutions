@@ -40,14 +40,18 @@ public class Quiz {
 
     }
 
-    public boolean rightAnswer(String personCode, int questionNumber) {
-        String answer = answers.get(personCode).get(questionNumber);
-        for (char c : solution.toCharArray()) {
+    public boolean rightAnswer(String personCode, int index) {
+        String answer = answers.get(personCode).get(index);
+        /*for (char c : solution.toCharArray()) {
             if(answer.equals(c) ){
                return true;
             }
+        }*/
+        if (answer.equals(String.valueOf(solution.charAt(index)))) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
 
@@ -62,7 +66,6 @@ public class Quiz {
                 maxX = counter;
                 personCode = entry.getKey();
             }
-
         }
         return personCode;
     }
@@ -70,7 +73,7 @@ public class Quiz {
     private int xCounter(Map.Entry<String,List<String>>entry){
         int counter = 0;
         for (String s : entry.getValue()) {
-            if (s.equals('x')) {
+            if (s.equals("X")) {
                 counter ++;
             }
         }
@@ -97,7 +100,7 @@ public class Quiz {
             if(rightAnswer(entry.getKey(), i)){
                 counter += i +1;
             }else {
-                if (entry.getValue().get(i) != "x") {
+                if (!entry.getValue().get(i).equals("X")) {
                     counter -= 2;
                 }
             }
@@ -110,7 +113,7 @@ public class Quiz {
         quiz.fileReader();
 
         System.out.println(quiz.rightAnswer("AB123",0));
-        System.out.println(quiz.findContestantWithMostX());
+        System.out.println("X:" + quiz.findContestantWithMostX());
         System.out.println(quiz.getWinner());
     }
 

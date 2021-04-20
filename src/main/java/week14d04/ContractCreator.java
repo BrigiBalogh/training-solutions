@@ -6,12 +6,12 @@ public class ContractCreator {
 
     private Contract template;
 
-    public ContractCreator(String name, List<Integer> monthlyPrices){
+    public ContractCreator(String name, List<Integer> monthlyPrices) {
          template = new Contract(name, monthlyPrices);
     }
 
     public Contract create(String client) {
-        return new Contract(template, client);
+        return new Contract( client, template.getMonthlyPrices());
 
     }
 
