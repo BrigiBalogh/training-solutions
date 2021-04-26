@@ -1,5 +1,5 @@
 package exceptionmulticatch.converter;
-
+/*
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,3 +34,4 @@ public class AnswerStat {
         return (int)Math.round((double)numberOfTrue / boo.length * 100);
    }
 }
+*/
