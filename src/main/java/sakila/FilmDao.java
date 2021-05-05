@@ -15,6 +15,7 @@ public class FilmDao {
     private PreparedStatement update;
     private PreparedStatement delete;
     private PreparedStatement rentalRateCounter;
+    private PreparedStatement rentalDuration;
 
     public FilmDao(Connection connection)throws SQLException {
         this.connection = connection;
@@ -23,10 +24,11 @@ public class FilmDao {
         this.insert = connection.prepareStatement("insert into film (" +
                 "title, description, release_year,original_language_id, language_id" +
                 ", rental_duration, rental_rate, length, replacement_cost, rating, special_features)" +
-                " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                " values ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')");
         this.update = connection.prepareStatement("update film set title = ?, language_id = ? WHERE film_id = ? ");
         this.delete = connection.prepareStatement("delete from film where id = ?");
         this.rentalRateCounter = connection.prepareStatement(" SELECT COUNT(rental_rate) FROM film  WHERE rental_rate = ?");
+        this.rentalDuration = connection.prepareStatement("SELECT COUNT(*) FROM film WHERE rental_duration < ?");
     }
 
 
@@ -63,6 +65,15 @@ public class FilmDao {
         return count;
     }
 
+    public int countRentalDuration()throws SQLException {
+        int count = 0;
+        ResultSet rs = this.rentalDuration.executeQuery();
+        while(rs.next()) {
+            count=rs.getInt("count(*)");
+        }
+        return count;
+    }
+
     public void insert(Film newFilm) throws SQLException {
         this.insert.setString(1, newFilm.getTitle());
         this.insert.setString(2, newFilm.getDescription());
@@ -90,5 +101,4 @@ public class FilmDao {
         this.delete.executeUpdate();
 
     }
-
 }

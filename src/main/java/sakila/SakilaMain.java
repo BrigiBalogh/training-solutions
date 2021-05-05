@@ -18,8 +18,8 @@ public class SakilaMain {
             dataSource.setUser("employees");
             dataSource.setPassword("employees");
             Sakila sakila = new Sakila(dataSource);
-            List<String> names = sakila.actorsSearcher();
-            System.out.println(names);
+           // List<String> names = sakila.actorsSearcher();
+           // System.out.println(names);
         }
         catch (IllegalStateException se) {
             throw new IllegalStateException("Can not create data source", se);
@@ -31,7 +31,6 @@ public class SakilaMain {
        //    System.out.println(birdTitles);
            int count = filmDao.countRentalRate();
            System.out.println(count);
-
 
        }catch (SQLException se) {
            throw new IllegalStateException("Cannot connet !", se);
