@@ -29,11 +29,14 @@ public class SakilaMain {
            FilmDao filmDao = new FilmDao(conn);
        // List<String>birdTitles  = filmDao.findByTitleBird();
        //    System.out.println(birdTitles);
-           int count = filmDao.countRentalRate();
+           int count = filmDao.countRentalRate(0.99);
            System.out.println(count);
-
+           count = filmDao.countRentalDuration(100);
+           System.out.println(count);
+           Film newFilm = new Film("Nincs kettő négy nélkül", "Brazil", 1983, 1, 1, 21, 4.99, 100, 25.0, "NC-17", "");
+           filmDao.insert(newFilm);
        }catch (SQLException se) {
-           throw new IllegalStateException("Cannot connet !", se);
+           throw new IllegalStateException("DB error!", se);
        }
     }
 }

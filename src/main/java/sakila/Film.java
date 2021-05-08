@@ -49,6 +49,10 @@ public class Film {
         this.specialFeatures = specialFeatures;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

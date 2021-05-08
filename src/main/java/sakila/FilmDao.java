@@ -1,9 +1,6 @@
 package sakila;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class FilmDao {
         this.insert = connection.prepareStatement("insert into film (" +
                 "title, description, release_year,original_language_id, language_id" +
                 ", rental_duration, rental_rate, length, replacement_cost, rating, special_features)" +
-                " values ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')");
+                " values (?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS); // '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?'
         this.update = connection.prepareStatement("update film set title = ?, language_id = ? WHERE film_id = ? ");
         this.delete = connection.prepareStatement("delete from film where id = ?");
         this.rentalRateCounter = connection.prepareStatement(" SELECT COUNT(rental_rate) FROM film  WHERE rental_rate = ?");
@@ -52,12 +49,14 @@ public class FilmDao {
         ResultSet rs = this.longestFilmLength.executeQuery();
         if(rs.next()) {
             length =rs.getInt("max(length)");
+            return length;
         }
-        return length;
+        throw new IllegalArgumentException("No result !");
     }
 
-    public int countRentalRate() throws SQLException {
+    public int countRentalRate(double rate) throws SQLException {
         int count = 0;
+        this.rentalRateCounter.setDouble(1, rate);
         ResultSet rs = this.rentalRateCounter.executeQuery();
         while(rs.next()) {
             count=rs.getInt("count(rental_rate)");
@@ -65,8 +64,9 @@ public class FilmDao {
         return count;
     }
 
-    public int countRentalDuration()throws SQLException {
+    public int countRentalDuration(int duration)throws SQLException {
         int count = 0;
+        this.rentalDuration.setInt(1, duration);
         ResultSet rs = this.rentalDuration.executeQuery();
         while(rs.next()) {
             count=rs.getInt("count(*)");
@@ -74,7 +74,7 @@ public class FilmDao {
         return count;
     }
 
-    public void insert(Film newFilm) throws SQLException {
+    public Film insert(Film newFilm) throws SQLException {
         this.insert.setString(1, newFilm.getTitle());
         this.insert.setString(2, newFilm.getDescription());
         this.insert.setInt(3, newFilm.getReleaseYear());
@@ -87,6 +87,11 @@ public class FilmDao {
         this.insert.setString(10, newFilm.getRating());
         this.insert.setString(11, newFilm.getSpecialFeatures());
         this.insert.executeUpdate();
+        ResultSet keys = this.insert.getGeneratedKeys();
+        if (keys.next()) {
+            newFilm.setId(keys.getInt(1));
+        }
+        return newFilm;
     }
 
     public void update(Film film) throws SQLException {
