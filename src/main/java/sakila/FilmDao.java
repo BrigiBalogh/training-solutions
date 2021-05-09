@@ -21,7 +21,7 @@ public class FilmDao {
         this.insert = connection.prepareStatement("insert into film (" +
                 "title, description, release_year,original_language_id, language_id" +
                 ", rental_duration, rental_rate, length, replacement_cost, rating, special_features)" +
-                " values (?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS); // '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?'
+                " values (?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         this.update = connection.prepareStatement("update film set title = ?, language_id = ? WHERE film_id = ? ");
         this.delete = connection.prepareStatement("delete from film where id = ?");
         this.rentalRateCounter = connection.prepareStatement(" SELECT COUNT(rental_rate) FROM film  WHERE rental_rate = ?");
