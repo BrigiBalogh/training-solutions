@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,6 +44,9 @@ class ActivityDaoTest {
 
     @Test
     void selectById() {
+
+        Activity activity = activityDao.selectById(1L);
+        assertEquals(ActivityType.BIKING, activity.getType());
     }
 
     @Test
@@ -52,5 +56,20 @@ class ActivityDaoTest {
     @Test
     void selectActivitiesByTypeTest() {
         assertEquals(activityDao.selectActivitiesByType(ActivityType.HIKING).size(),1);
+    }
+
+    @Test
+    void beforeDateTest() {
+        assertEquals(2, activityDao.activitiesBeforeDate(LocalDate.of
+                (2021, 02, 12)).size());
+
+        System.out.println(activityDao.createStatementForMoreInsert(5));
+    }
+    @Test
+    void findByIdTest() {
+        Activity activity = new Activity(LocalDateTime.now(),"Biking in Mecsek", ActivityType.BIKING);
+        Activity result = activityDao.insertActivity(activity);
+
+        assertEquals(activity.getDesc(), activityDao.selectById(result.getId()).getDesc());
     }
 }

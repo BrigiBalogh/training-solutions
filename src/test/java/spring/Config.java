@@ -10,10 +10,16 @@ import javax.sql.DataSource;
 @Configuration
 public class Config {
 
+    @Bean
     public Flyway flyway() {
-        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        Flyway flyway = Flyway
+                .configure()
+                .locations("filesystem:src/test/resources/employees/db")
+                .dataSource(dataSource())
+                .load();
         return flyway;
     }
+
 
     @Bean
     public DataSource dataSource() {

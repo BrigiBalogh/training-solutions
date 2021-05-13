@@ -31,7 +31,15 @@ public class SakilaMain {
        //    System.out.println(birdTitles);
            int count = filmDao.countRentalRate(0.99);
            System.out.println(count);
-           count = filmDao.countRentalDuration(100);
+       //    count = filmDao.countRentalDuration(5);
+        //   System.out.println(count);
+           int min = filmDao.findShortestTimeByRental(1);
+           System.out.println(min);
+           double max = filmDao.findHighestRatio();
+           System.out.println(max);
+           count = filmDao.countFilmFromSpecialFeatures("Trailers");
+           System.out.println(count);
+           count = filmDao.countFilmByRating("NC-17");
            System.out.println(count);
            Film newFilm = new Film("Nincs kettő négy nélkül", "Brazil", 1983, 1, 1, 21, 4.99, 100, 25.0, "NC-17", "");
            filmDao.insert(newFilm);

@@ -43,6 +43,6 @@ class EmployeeDaoTest {
        long id = employeeDao.createEmployee2("John Doe");
         System.out.println(id);
         String name = employeeDao.findEmployeeNameById(id);
-        assertEquals("John doe", name);
+        assertEquals("John Doe", name);
     }
 }

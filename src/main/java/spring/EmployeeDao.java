@@ -21,7 +21,7 @@ public class EmployeeDao {
     public long createEmployee2(String name) {
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(conn -> {
-            PreparedStatement ps = conn.prepareStatement("Insert into employees(emp_name) values(?)," +
+            PreparedStatement ps = conn.prepareStatement("insert into employees (emp_name) values (?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
             return ps;

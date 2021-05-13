@@ -13,6 +13,11 @@ public class FilmDao {
     private PreparedStatement delete;
     private PreparedStatement rentalRateCounter;
     private PreparedStatement rentalDuration;
+    private PreparedStatement highestRatio;
+    private PreparedStatement shortestTimeByRental;
+    private PreparedStatement specialFeatures;
+    private PreparedStatement filmByRating;
+    private PreparedStatement allFilm;
 
     public FilmDao(Connection connection)throws SQLException {
         this.connection = connection;
@@ -26,12 +31,28 @@ public class FilmDao {
         this.delete = connection.prepareStatement("delete from film where id = ?");
         this.rentalRateCounter = connection.prepareStatement(" SELECT COUNT(rental_rate) FROM film  WHERE rental_rate = ?");
         this.rentalDuration = connection.prepareStatement("SELECT COUNT(*) FROM film WHERE rental_duration < ?");
+        this.highestRatio = connection.prepareStatement("SELECT MAX(replacement_cost/rental_rate) FROM film");
+        this.shortestTimeByRental = connection.prepareStatement("SELECT MIN(length) FROM film WHERE rental_rate <= ?");
+        this.specialFeatures = connection.prepareStatement("SELECT COUNT(*) FROM film WHERE special_features LIKE ? ");
+        this.filmByRating = connection.prepareStatement("SELECT COUNT(*) FROM film WHERE rating = ?");
+        this.allFilm = connection.prepareStatement("Select * from film");
     }
 
 
     public List<Film> findAll() throws SQLException {
-        return null;
-
+        List<Film> films = new ArrayList<>();
+        ResultSet rs = this.allFilm.executeQuery();
+        while (rs.next()) {
+            Film film = new Film(rs.getInt("id"),rs.getString("title"),
+                    rs.getString("description"), rs.getInt("release_year"),
+                    rs.getInt("language_id"),
+                    rs.getInt("original_language_id"),rs.getInt("rental_duration"),
+                    rs.getDouble("rental_rate"),
+                    rs.getInt("length"), rs.getDouble("replacement_cost"),
+                    rs.getString("rating"),rs.getString("special_features"));
+            films.add(film);
+        }
+        return films;
     }
 
     public List<String> findByTitleBird () throws SQLException {
@@ -40,8 +61,9 @@ public class FilmDao {
         while (rs.next()) {
             String name = rs.getString("title");
             names.add(name);
+            return names;
         }
-        return names;
+        throw new IllegalArgumentException("No result !");
     }
 
     public int getLongestFilmLength() throws SQLException {
@@ -72,6 +94,46 @@ public class FilmDao {
             count=rs.getInt("count(*)");
         }
         return count;
+    }
+
+    public double findHighestRatio()throws SQLException {
+        double max = 0;
+        ResultSet rs = this.highestRatio.executeQuery();
+        if (rs.next()) {
+            max = rs.getDouble("MAX(replacement_cost/rental_rate)");
+        }
+        return max;
+    }
+
+    public int findShortestTimeByRental(double rate)throws SQLException {
+        int min = 0;
+        this.shortestTimeByRental.setDouble(1, rate );
+        ResultSet rs = this.shortestTimeByRental.executeQuery();
+        if(rs.next()) {
+            min = rs.getInt("min(length)");
+        }
+        return min;
+    }
+
+    public int countFilmFromSpecialFeatures(String specialFeatures) throws SQLException {
+        int count = 0;
+        this.specialFeatures.setString(1,"%"+specialFeatures+"%");
+        ResultSet rs = this.specialFeatures.executeQuery();
+        if(rs.next()) {
+            count = rs.getInt("count(*)");
+        }
+        return count;
+    }
+
+    public int countFilmByRating(String rating)throws SQLException {
+        int count = 0;
+        this.filmByRating.setString(1,rating);
+        ResultSet rs = this.filmByRating.executeQuery();
+        if(rs.next()) {
+            count = rs.getInt("count(*)");
+        }
+        return count;
+
     }
 
     public Film insert(Film newFilm) throws SQLException {

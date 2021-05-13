@@ -2,6 +2,8 @@ package activitytracker;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +16,38 @@ public class ActivityDao {
     }
 
 
-    public void insertActivity( Activity activity) {
+    public Activity insertActivity( Activity activity) {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("insert into activities(start_time,activity_desc,activity_type) values (?,?,?)")) {
+             PreparedStatement stmt = conn.prepareStatement(
+                     "insert into activities(start_time,activity_desc,activity_type) values (?,?,?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
             stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.executeUpdate();
+            return getIdFromStatement(activity, stmt);
         }
         catch (SQLException se) {
             throw new IllegalStateException("Can not insert", se);
         }
+    }
+
+    private Activity getIdFromStatement(Activity activity, PreparedStatement stmt) throws SQLException {
+        try(ResultSet rs = stmt.getGeneratedKeys()) {
+            if(rs.next()) {
+                long id = rs.getLong(1);
+                return new Activity(id, activity.getStartTime(), activity.getDesc(), activity.getType());
+            }
+        }
+        throw new IllegalStateException("Cannot get key !");
+    }
+
+    public String createStatementForMoreInsert(int numberOfElements) {
+        StringBuilder sb = new StringBuilder("insert into activities(start_time,activity_desc,activity_type) values ");
+        for (int i = 0; i < numberOfElements; i++) {
+            sb.append("(?,?,?)");
+        }
+        return sb.toString();
     }
 
     public Activity selectById( long id) {
@@ -79,6 +102,20 @@ public class ActivityDao {
 
         }catch (SQLException se) {
             throw new IllegalStateException("Cannot query", se);
+        }
+
+    }
+
+    public List<Activity> activitiesBeforeDate(LocalDate date) {
+        List<Activity> result = new ArrayList<>();
+        try(Connection conn = dataSource.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("select * from activities where start_time < ?")){
+           // stmt.setTimestamp(1, Timestamp.valueOf("startTime")); LocalDateTime -mal
+            LocalDateTime actualDate = date.atTime(0,0);//23 59 ha az az napiakat is akarom.
+            stmt.setTimestamp(1, Timestamp.valueOf(actualDate));
+            return selectByPreparedStatement(stmt);
+        }catch (SQLException se) {
+            throw new IllegalStateException("Cannot connect !", se);
         }
 
     }
