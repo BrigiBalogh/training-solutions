@@ -2,7 +2,6 @@ package lambdaintro;
 
 
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class SocialNetworkTest {
-/*
+
     @Test
     public void createMember() {
         Member member = new Member("John Doe", Arrays.asList("Java", "OOP"), Sex.MALE);
@@ -73,5 +72,5 @@ public class SocialNetworkTest {
         assertEquals(3, names.size());
         assertEquals("John Doe", names.get(0));
         assertEquals("James Doe", names.get(2));
-    }*/
+    }
 }

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class FamilyBirthdaysTest {
-/*
+
     @Test
     public void testIsFamilyBirthday() {
         FamilyBirthdays familyBirthdays = new FamilyBirthdays(
@@ -35,6 +35,6 @@ public class FamilyBirthdaysTest {
         assertEquals(0, LocalDate.of(2017, 10, 20).query(familyBirthdays::nextFamilyBirthDay));
         assertEquals(176, LocalDate.of(2017, 11, 10).query(familyBirthdays::nextFamilyBirthDay));
     }
-*/
+
 
 }

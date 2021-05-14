@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class OfficeDocumentReaderTest {
-/*
     @TempDir
     public File folder;
 
@@ -64,5 +63,5 @@ public class OfficeDocumentReaderTest {
         } catch (IOException ioe) {
             throw new RuntimeException("Cannot create test file: " + path, ioe);
         }
-    }*/
+    }
 }
