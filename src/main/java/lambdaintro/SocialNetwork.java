@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public class SocialNetwork {
 
-    private List<Member> members = new ArrayList<>();
+    private List<Member> members;
 
 
     public SocialNetwork(List<Member> members) {

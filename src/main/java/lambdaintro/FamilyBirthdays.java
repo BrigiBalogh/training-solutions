@@ -4,20 +4,21 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAccessor;
+import java.util.Arrays;
 import java.util.List;
 
 public class FamilyBirthdays {
 
     private List<LocalDate> birthdays;
 
-    public FamilyBirthdays(List<LocalDate> birthdays) {
-        this.birthdays = birthdays;
+    public FamilyBirthdays(LocalDate... birthdays) {
+
+        this.birthdays = Arrays.asList(birthdays);
     }
 
-    public FamilyBirthdays(LocalDate of, LocalDate of1, LocalDate of2) {
-    }
 
-   public boolean isFamilyBirthday(TemporalAccessor temporalAccessor) {
+
+    public boolean isFamilyBirthday(TemporalAccessor temporalAccessor) {
         int month = temporalAccessor.get(ChronoField.MONTH_OF_YEAR);
         int day = temporalAccessor.get(ChronoField.DAY_OF_MONTH);
 
