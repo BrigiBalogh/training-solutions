@@ -1,0 +1,65 @@
+package lambdaintermediate;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Cafe {
+
+    private List<CoffeeOrder> orders;
+
+    public Cafe(List<CoffeeOrder> orders) {
+        this.orders = new ArrayList<>(orders);
+    }
+
+    public void addOrder(CoffeeOrder order) {
+        orders.add(order);
+    }
+
+
+    public BigDecimal getTotalIncome() {
+        return orders.stream()
+              .flatMap(x -> x.getCoffeeList().stream())
+               .map(c -> c.getPrice())
+                .reduce(BigDecimal.ZERO, (a, b) -> a.add(b), (x, y) -> x.add(y)).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public  BigDecimal getTotalIncome(LocalDate date) {
+        return  orders.stream()
+                .filter(co -> co.getDateTime().toLocalDate().equals(date))
+                .flatMap(x -> x.getCoffeeList().stream())
+                .map(c -> c.getPrice())
+                .reduce(BigDecimal.ZERO, (a, b) -> a.add(b), (x, y) -> x.add(y)).setScale(2, RoundingMode.HALF_UP);
+
+    }
+
+    public List<CoffeeOrder> getOrders() {
+        return orders;
+    }
+
+    public long getNumberOfCoffee(CoffeeType type) {
+        return orders.stream()
+                .flatMap(x -> x.getCoffeeList().stream())
+                .filter(c -> c.getType()== type ).count();
+    }
+
+    public List<CoffeeOrder> getOrdersAfter(LocalDateTime from) {
+        return orders.stream()
+                .filter(co -> co.getDateTime().isAfter(from))
+                .collect(Collectors.toList());
+    }
+
+    public List<CoffeeOrder> getFirstFiveOrder(LocalDate date) {
+        return orders.stream()
+                .filter(co -> co.getDateTime().toLocalDate().equals(date))
+                .sorted(Comparator.comparing(CoffeeOrder::getDateTime))
+                .limit(5)
+                .collect(Collectors.toList());
+    }
+}

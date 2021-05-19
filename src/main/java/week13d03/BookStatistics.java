@@ -3,6 +3,7 @@ package week13d03;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class BookStatistics {
 
@@ -34,5 +35,23 @@ public class BookStatistics {
             }
         }
         return author;
+    }
+
+    public Optional<String> findAuthorWithMostNumberOfPages1(List<Book> books) {
+        if(books.isEmpty()) {
+            return Optional.empty();
+        }
+        Map<String, Integer> booksMap = new HashMap<>();
+        for(Book book : books) {
+            String author = book.getAuthor();
+
+           // int value = booksMap.getOrDefault(author,0);
+          //  value += book.getNumberOfPages();
+         //   booksMap.put(author, value);
+
+            booksMap.merge(author,
+                    book.getNumberOfPages(),
+                    (x,y) -> x + y );
+        }
     }
 }
