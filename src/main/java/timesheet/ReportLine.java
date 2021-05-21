@@ -18,6 +18,7 @@ private long time;
         return time;
     }
 
-    public void addTime(int i) {
+    public void addTime(long time) {
+        this.time += time;
     }
 }

@@ -1,9 +1,9 @@
 package week13d03;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import com.google.protobuf.MapEntry;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookStatistics {
 
@@ -37,7 +37,7 @@ public class BookStatistics {
         return author;
     }
 
-    public Optional<String> findAuthorWithMostNumberOfPages1(List<Book> books) {
+   /* public Optional<String> findAuthorWithMostNumberOfPages1(List<Book> books) {
         if(books.isEmpty()) {
             return Optional.empty();
         }
@@ -52,6 +52,24 @@ public class BookStatistics {
             booksMap.merge(author,
                     book.getNumberOfPages(),
                     (x,y) -> x + y );
+            // vagy Integer :: sum
+            // melyik könyv a leghosszabb ? (x, y) -> x > y ? x : y vagy (x, y ) -> Math.max(x, y)
+            // vagy Math :: max
         }
+       // public static int add(int i, int j){
+        //    return i + j;
+       // }
+        return Optional.of(author);
+    }*/
+
+    public  Optional<String> findAuthorWithMaxPageWithStream(List<Book> books) {
+        Map<String, Integer> m = books.stream()
+                .collect(Collectors.groupingBy(b -> b.getAuthor(), // Book :: getAuthor
+                        Collectors.summingInt(b -> b.getNumberOfPages())));  // Book :: getNumberOfPages
+
+        return m.entrySet().stream()
+                .max(Comparator.comparing(Map.Entry::getValue)).
+                map(Map.Entry::getKey);
+
     }
 }
