@@ -24,6 +24,10 @@ public class Transformers {
         return result;
     }
 
+    public <T> T reduce1(List<T> list, T identity, BiFunction<T, T, T> combiner){
+        return list.stream().reduce(identity, combiner::apply);
+    }
+
     public static void main(String[] args) {
         Transformers transformers = new Transformers();
 

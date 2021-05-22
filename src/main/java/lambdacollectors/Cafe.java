@@ -3,6 +3,7 @@ package lambdacollectors;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 public class Cafe {
@@ -22,11 +23,13 @@ public class Cafe {
     }
 
     public Map<CoffeeType, Long> getCountByCoffeeType() {
-        return orders.stream().flatMap(c -> c.getCoffeeList().stream()
-                .collect(Collectors.groupingBy((Coffee c) -> c.getType(), Collectors.counting())));
+        return orders.stream().flatMap(c -> c.getCoffeeList().stream())
+                .collect(Collectors.groupingBy((Coffee cc) -> cc.getType(), Collectors.counting()));
     }
 
         public double getAverageOrder () {
-            return 0;
+            //OptionalDouble avg = orders.stream().mapToInt(co -> co.getCoffeeList().size()).average();
+            //return avg.orElse(0);
+            return orders.stream().mapToInt(co -> co.getCoffeeList().size()).average().orElse(0);
         }
     }
